@@ -1,0 +1,28 @@
+/* src/components/ClothingPage.css */
+
+.container {
+    display: flex;
+    flex-wrap: wrap; 
+  }
+  
+  .clothing-page {
+    padding: 20px;
+  }
+  
+  .card {
+    margin: 0 10px 10px 0; 
+    flex: 1 0 calc(25% - 10px); 
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+  }
+  
+  .btn-secondary {
+    margin-left: 10px;
+  }
+  

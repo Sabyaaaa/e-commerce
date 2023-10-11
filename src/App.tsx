@@ -1,12 +1,16 @@
 import React from 'react';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CardListing from './components/ClothingPage/ClothingPage';
+import Navbar from './Navbar/Navbar';
 
-function App() {
+
+const App: React.FC = () => {
   return (
-    <div>
-     <h1>hey</h1>
+    <div className="App">
+      <Navbar />
+      <CardListing />
     </div>
   );
-}
+};
 
 export default App;
