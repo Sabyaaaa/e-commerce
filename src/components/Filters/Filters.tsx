@@ -1,5 +1,3 @@
-// src/components/Filters.tsx
-
 import React from "react";
 import "./Filters.css";
 
@@ -21,7 +19,6 @@ const Filters: React.FC = () => {
           <input type="radio" name="price" value="50-100" />
           $50 - $100
         </label>
-        {/* Add more price range options as needed */}
       </div>
       <div className="filter-section">
         <h5>Gender</h5>
