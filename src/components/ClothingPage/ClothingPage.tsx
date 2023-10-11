@@ -9,6 +9,7 @@ const ClothingPage: React.FC = () => {
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [filteredItems, setFilteredItems] = useState(mockClothingItems);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedPrice, setSelectedPrice] = useState<string | null>(null);
 
   const handleSizeChange = (size: string) => {
     setSelectedSizes((prevSizes) =>
@@ -33,6 +34,9 @@ const ClothingPage: React.FC = () => {
         : [...prevCategories, category]
     );
   };
+  const handlePriceChange = (price: string) => {
+    setSelectedPrice(price);
+  };
 
   useEffect(() => {
     const filteredClothingItems = mockClothingItems.filter((item) => {
@@ -42,23 +46,37 @@ const ClothingPage: React.FC = () => {
         selectedColors.length === 0 || selectedColors.includes(item.color);
       const passesCategoryFilter =
         selectedCategories.length === 0 ||
-        selectedCategories.includes(item.category);  
-      return passesSizeFilter && passesColorFilter && passesCategoryFilter;
+        selectedCategories.includes(item.category);
+      let passesPriceFilter = true;
+
+      if (selectedPrice) {
+        const [minPrice, maxPrice] = selectedPrice.split("-").map(parseFloat);
+        passesPriceFilter = item.price >= minPrice && item.price <= maxPrice;
+      }
+
+      return (
+        passesSizeFilter &&
+        passesColorFilter &&
+        passesCategoryFilter &&
+        passesPriceFilter
+      );
     });
 
     setFilteredItems(filteredClothingItems);
-  }, [selectedSizes, selectedColors, selectedCategories]);
+  }, [selectedSizes, selectedColors, selectedCategories, selectedPrice]);
 
   return (
     <div className="container clothing-page">
       <div className="col-md-3">
-        <Filters
-           selectedSizes={selectedSizes}
-           onSizeChange={handleSizeChange}
-           selectedColors={selectedColors}
-           onColorChange={handleColorChange}
-           selectedCategories={selectedCategories}
-           onCategoryChange={handleCategoryChange}
+      <Filters
+          selectedSizes={selectedSizes}
+          onSizeChange={handleSizeChange}
+          selectedColors={selectedColors}
+          onColorChange={handleColorChange}
+          selectedCategories={selectedCategories}
+          onCategoryChange={handleCategoryChange}
+          selectedPrice={selectedPrice}
+          onPriceChange={handlePriceChange}
         />
       </div>
       <div className="col-md-9">

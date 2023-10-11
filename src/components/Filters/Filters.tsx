@@ -12,6 +12,8 @@ interface FiltersProps {
   onColorChange: (color: string) => void;
   selectedCategories: string[];
   onCategoryChange: (category: string) => void;
+  selectedPrice: string | null;
+  onPriceChange: (price: string) => void;
 }
 
 const Filters: React.FC<FiltersProps> = ({
@@ -21,12 +23,14 @@ const Filters: React.FC<FiltersProps> = ({
   onColorChange,
   selectedCategories,
   onCategoryChange,
+  selectedPrice,
+  onPriceChange,
 }) => {
   return (
     <div className="filters-container">
       <h4>Filters</h4>
-      <Category onCategoryChange={onCategoryChange} /> 
-      <Price />
+      <Category onCategoryChange={onCategoryChange} />
+      <Price onPriceChange={onPriceChange} />
       <Colour onColorChange={onColorChange} />
       <Size selectedSizes={selectedSizes} onSizeChange={onSizeChange} />
     </div>
