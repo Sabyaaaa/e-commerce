@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
+
+// import {AiOutlineShoppingCart, AiOutlineUserAdd} from "react-icons/ai";
 
 const Navbar: React.FC = () => {
   return (

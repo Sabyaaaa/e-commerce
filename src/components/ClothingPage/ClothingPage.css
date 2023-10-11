@@ -9,7 +9,7 @@
   
   .card {
     margin: 0 10px 10px 0; 
-    flex: 1 0 calc(25% - 10px); 
+    /* flex: 1 0 calc(25% - 10px);  */
   }
   
   .card-title {

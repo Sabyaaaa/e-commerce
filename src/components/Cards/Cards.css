@@ -10,5 +10,43 @@
 
 .card{
     height: 30rem;
-    width: 20rem;
 }
+.description-popup {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #b3cce1; 
+    color: rgb(13, 1, 1);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 9999;
+  }
+  
+  .description-popup-content {
+    position: relative;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: red; 
+  }
+
+  
+  
+  
+ 
+  
+ 
+  
+  
+
+  
