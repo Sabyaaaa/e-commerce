@@ -8,15 +8,26 @@ import Size from "./Size/Size";
 interface FiltersProps {
   selectedSizes: string[];
   onSizeChange: (size: string) => void;
+  selectedColors: string[];
+  onColorChange: (color: string) => void;
+  selectedCategories: string[];
+  onCategoryChange: (category: string) => void;
 }
 
-const Filters: React.FC<FiltersProps> = ({ selectedSizes, onSizeChange }) => {
+const Filters: React.FC<FiltersProps> = ({
+  selectedSizes,
+  onSizeChange,
+  selectedColors,
+  onColorChange,
+  selectedCategories,
+  onCategoryChange,
+}) => {
   return (
     <div className="filters-container">
       <h4>Filters</h4>
-      <Category />
+      <Category onCategoryChange={onCategoryChange} /> 
       <Price />
-      <Colour />
+      <Colour onColorChange={onColorChange} />
       <Size selectedSizes={selectedSizes} onSizeChange={onSizeChange} />
     </div>
   );
