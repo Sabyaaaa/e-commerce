@@ -1,13 +1,17 @@
 // src/components/Navbar.tsx
 
-import React from 'react';
-import './Navbar.css';
+import React from "react";
+import "./Navbar.css";
 
 const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <img src="path/to/your-logo.png" alt="Brand Logo" className="brand-logo" />
+        <img
+          src="https://i.pinimg.com/474x/f5/ae/c9/f5aec9c889e1c28268b62e0472a9f33b.jpg"
+          alt="Brand Logo"
+          className="brand-logo"
+        />
       </div>
       <div className="navbar-menu">
         <ul className="navbar-menu-list">

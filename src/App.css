@@ -1,3 +1,5 @@
-* {
-  box-sizing: border-box;
+/* src/App.css */
+
+.content {
+  padding-top: 4.5rem; /* Adjust the padding-top to match the height of the navbar */
 }
