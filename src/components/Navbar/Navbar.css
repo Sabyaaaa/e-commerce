@@ -1,21 +1,19 @@
-/* src/components/Navbar.css */
-
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; /* Set a high z-index to ensure the navbar is on top of other elements */
+  z-index: 1000; 
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #fff; /* Adjust background color as needed */
-  border-bottom: 1px solid #ccc; /* Border between navbar and content */
+  background-color: #fff; 
+  border-bottom: 1px solid #ccc; 
 }
 
 .brand-logo {
-  width: 50px; /* Adjust logo size as needed */
+  width: 50px; 
   height: auto;
 }
 
