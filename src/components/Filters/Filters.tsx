@@ -6,6 +6,38 @@ const Filters: React.FC = () => {
     <div className="filters-container">
       <h4>Filters</h4>
       <div className="filter-section">
+        <h5>Category</h5>
+        <label>
+          <input type="checkbox" name="category" value="t-shirt" />
+          T-shirt
+        </label>
+        <label>
+          <input type="checkbox" name="category" value="jeans" />
+          Jeans
+        </label>
+        <label>
+          <input type="checkbox" name="category" value="dress" />
+          Dress
+        </label>
+        <label>
+          <input type="checkbox" name="category" value="shirts" />
+          Shirts
+        </label>
+        <label>
+          <input type="checkbox" name="category" value="trousers" />
+          Trousers
+        </label>
+        <label>
+          <input type="checkbox" name="category" value="jacket" />
+          Jacket
+        </label>
+        <label>
+          <input type="checkbox" name="category" value="sweater" />
+          Sweater
+        </label>
+
+      </div>
+      <div className="filter-section">
         <h5>Price Range</h5>
         <label>
           <input type="radio" name="price" value="0-25" />
@@ -30,7 +62,6 @@ const Filters: React.FC = () => {
           <input type="checkbox" name="gender" value="female" />
           Female
         </label>
-        {/* Add more gender options as needed */}
       </div>
       <div className="filter-section">
         <h5>Size</h5>
@@ -46,7 +77,7 @@ const Filters: React.FC = () => {
           <input type="checkbox" name="size" value="large" />
           Large
         </label>
-        {/* Add more size options as needed */}
+        
       </div>
       <div className="filter-section">
         <h5>Color</h5>
@@ -60,7 +91,19 @@ const Filters: React.FC = () => {
         </label>
         <label>
           <input type="checkbox" name="color" value="green" />
-          Green
+          Pink
+        </label>
+        <label>
+          <input type="checkbox" name="color" value="green" />
+          Beige
+        </label>
+        <label>
+          <input type="checkbox" name="color" value="green" />
+          Black
+        </label>
+        <label>
+          <input type="checkbox" name="color" value="green" />
+          Yellow
         </label>
       </div>
     </div>
