@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Filters.css";
 import Category from "./Category/Category";
 import Colour from "./Colour/Colour";
