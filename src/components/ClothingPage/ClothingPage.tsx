@@ -47,19 +47,19 @@ const ClothingPage: React.FC = () => {
   useEffect(() => {
     const filteredClothingItems = mockClothingItems.filter((item) => {
       const passesSizeFilter =
-        selectedSizes.length === 0 || selectedSizes.includes(item.size);
+        selectedSizes.length === 0 ||
+        selectedSizes.includes(item.size.toLowerCase());
       const passesColorFilter =
-        selectedColors.length === 0 || selectedColors.includes(item.color);
+        selectedColors.length === 0 ||
+        selectedColors.includes(item.color.toLowerCase());
       const passesCategoryFilter =
         selectedCategories.length === 0 ||
-        selectedCategories.includes(item.category);
+        selectedCategories.includes(item.category.toLowerCase());
       let passesPriceFilter = true;
       const passesGenderFilter =
         !selectedGender ||
         item.gender.toLowerCase() ===
           (selectedGender || item.gender).toLowerCase();
-      console.log("Selected gender:", selectedGender);
-      console.log("Item gender:", item.gender);
 
       if (selectedPrice) {
         const [minPrice, maxPrice] = selectedPrice.split("-").map(parseFloat);
@@ -74,8 +74,6 @@ const ClothingPage: React.FC = () => {
         passesGenderFilter
       );
     });
-
-    // console.log("Filtered items:", filteredClothingItems);
 
     setFilteredItems(filteredClothingItems);
   }, [
