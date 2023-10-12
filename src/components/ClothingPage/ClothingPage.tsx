@@ -3,6 +3,7 @@ import Card from "../Cards/Cards";
 import "./ClothingPage.css";
 import Filters from "../Filters/Filters";
 import mockClothingItems from "../../MOCK_DATA.json";
+import Navbar from "../Navbar/Navbar";
 
 const ClothingPage: React.FC = () => {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
@@ -10,6 +11,11 @@ const ClothingPage: React.FC = () => {
   const [filteredItems, setFilteredItems] = useState(mockClothingItems);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPrice, setSelectedPrice] = useState<string | null>(null);
+  const [selectedGender, setSelectedGender] = useState<string | null>(null);
+
+  const handleGenderChange = (gender: string) => {
+    setSelectedGender(gender);
+  };
 
   const handleSizeChange = (size: string) => {
     setSelectedSizes((prevSizes) =>
@@ -48,6 +54,12 @@ const ClothingPage: React.FC = () => {
         selectedCategories.length === 0 ||
         selectedCategories.includes(item.category);
       let passesPriceFilter = true;
+      const passesGenderFilter =
+        !selectedGender ||
+        item.gender.toLowerCase() ===
+          (selectedGender || item.gender).toLowerCase();
+      console.log("Selected gender:", selectedGender);
+      console.log("Item gender:", item.gender);
 
       if (selectedPrice) {
         const [minPrice, maxPrice] = selectedPrice.split("-").map(parseFloat);
@@ -58,17 +70,26 @@ const ClothingPage: React.FC = () => {
         passesSizeFilter &&
         passesColorFilter &&
         passesCategoryFilter &&
-        passesPriceFilter
+        passesPriceFilter &&
+        passesGenderFilter
       );
     });
 
+    // console.log("Filtered items:", filteredClothingItems);
+
     setFilteredItems(filteredClothingItems);
-  }, [selectedSizes, selectedColors, selectedCategories, selectedPrice]);
+  }, [
+    selectedSizes,
+    selectedColors,
+    selectedCategories,
+    selectedPrice,
+    selectedGender,
+  ]);
 
   return (
     <div className="container clothing-page">
       <div className="col-md-3">
-      <Filters
+        <Filters
           selectedSizes={selectedSizes}
           onSizeChange={handleSizeChange}
           selectedColors={selectedColors}
@@ -79,7 +100,9 @@ const ClothingPage: React.FC = () => {
           onPriceChange={handlePriceChange}
         />
       </div>
+
       <div className="col-md-9">
+        <Navbar onGenderChange={handleGenderChange} />
         <div className="row">
           {filteredItems.map((item) => (
             <div className="col-md-4 mb-4" key={item.id}>

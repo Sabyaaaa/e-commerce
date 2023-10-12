@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Navbar.css";
 
 // import {AiOutlineShoppingCart, AiOutlineUserAdd} from "react-icons/ai";
-
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onGenderChange: (gender: string) => void;
+}
+const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
+  const handleGenderChange = (gender: string) => {
+    onGenderChange(gender);
+  };
   return (
     <nav className="navbar">
       <div className="navbar-brand">
@@ -15,8 +20,18 @@ const Navbar: React.FC = () => {
       </div>
       <div className="navbar-menu">
         <ul className="navbar-menu-list">
-          <li className="navbar-menu-item">Men</li>
-          <li className="navbar-menu-item">Women</li>
+          <li
+            className="navbar-menu-item"
+            onClick={() => handleGenderChange("men")}
+          >
+            Men
+          </li>
+          <li
+            className="navbar-menu-item"
+            onClick={() => handleGenderChange("women")}
+          >
+            Women
+          </li>
         </ul>
       </div>
       <div className="navbar-actions">
