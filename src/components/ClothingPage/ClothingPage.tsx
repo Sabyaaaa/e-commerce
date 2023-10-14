@@ -132,6 +132,10 @@ const ClothingPage: React.FC = () => {
                 color={item.color}
                 rating={item.rating}
                 gender={item.gender}
+                size={item.size}
+                image_url2={item.image_url}
+                delivery_date={item.delivery_date}
+                materials={item.material}
                 renderStars={renderStars}
               />
             </div>

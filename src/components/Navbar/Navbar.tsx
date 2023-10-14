@@ -36,9 +36,9 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
       </div>
       <div className="navbar-actions">
         <ul className="navbar-actions-list">
-          <li className="navbar-actions-item">Profile</li>
-          <li className="navbar-actions-item">Wishlist</li>
+          {/* <li className="navbar-actions-item">Wishlist</li> */}
           <li className="navbar-actions-item">Cart</li>
+          <li className="navbar-actions-item">Profile</li>
         </ul>
       </div>
     </nav>

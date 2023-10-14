@@ -30,9 +30,9 @@ const Filters: React.FC<FiltersProps> = ({
     <div className="filters-container">
       <h4>Filters</h4>
       <Category onCategoryChange={onCategoryChange} />
+      <Size selectedSizes={selectedSizes} onSizeChange={onSizeChange} />
       <Price onPriceChange={onPriceChange} />
       <Colour onColorChange={onColorChange} />
-      <Size selectedSizes={selectedSizes} onSizeChange={onSizeChange} />
     </div>
   );
 };

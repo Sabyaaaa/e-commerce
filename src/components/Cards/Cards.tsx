@@ -10,6 +10,10 @@ interface CardProps {
   rating: number;
   color: string;
   gender: string;
+  size: string;
+  image_url2: string;
+  delivery_date: string;
+  materials: string;
   renderStars: (rating: number) => React.ReactNode;
 }
 
@@ -22,6 +26,10 @@ const Card: React.FC<CardProps> = ({
   rating,
   color,
   gender,
+  size,
+  image_url2,
+  delivery_date,
+  materials,
   renderStars,
 }) => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
@@ -60,12 +68,37 @@ const Card: React.FC<CardProps> = ({
                 &times;
               </span>
               <h2>{productName}</h2>
-              <p>{`Rating: ${rating}`}</p>
-              <p>{`Price: $${price}`}</p>
-              <p>{`Category: ${category}`}</p>
-              <p>{`Color: ${color}`}</p>
-              <p>{`Gender: ${gender}`}</p>
-              <p>{`Description: ${description}`}</p>
+              <img className="description-img" src={image_url2} alt="product" />
+              {/* <p>{`Rating: ${rating}`}</p> */}
+              {/* <p>{`Price: $${price}`}</p> */}
+              <div className="des-content">
+                <p>
+                  <b>Size: </b>
+                  {size}
+                </p>
+                <p>
+                  <b>Category: </b>
+                  {category}
+                </p>
+                <p>
+                  <b>Color: </b>
+                  {color}
+                </p>
+                <p>
+                  <b>Material used: </b>
+                  {materials}
+                </p>
+                
+                {/* <p>{`Gender: ${gender}`}</p> */}
+                <p>
+                  <b>Description: </b>
+                  {description}
+                </p>
+                <p>
+                  <b><i>Product will be delivered by </i></b>
+                  <b>{delivery_date}</b>
+                </p>
+              </div>
             </div>
           </div>
         )}
