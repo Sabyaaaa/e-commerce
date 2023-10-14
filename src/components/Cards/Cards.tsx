@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import "./Cards.css";
 import Button from "../Button/Button";
 
-interface ProductCardProps {
+interface CardProps {
   imageSrc: string;
   productName: string;
   price: number;
   description: string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({
+const Card: React.FC<CardProps> = ({
   imageSrc,
   productName,
   price,
@@ -53,4 +53,4 @@ const ProductCard: React.FC<ProductCardProps> = ({
   );
 };
 
-export default ProductCard;
+export default Card;

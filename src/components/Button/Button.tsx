@@ -4,7 +4,7 @@ import "./Button.css";
 interface ButtonProps {
   onClick: () => void;
   label: string;
-  isPrimary?: boolean; // Optional prop to determine button style
+  isPrimary?: boolean; 
 }
 
 const Button: React.FC<ButtonProps> = ({ onClick, label, isPrimary }) => {
