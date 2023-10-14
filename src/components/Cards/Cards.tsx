@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import "./Cards.css";
+import Button from "../Button/Button";
 
-interface CardProps {
+interface ProductCardProps {
   imageSrc: string;
   productName: string;
   price: number;
   description: string;
 }
 
-const Card: React.FC<CardProps> = ({
+const ProductCard: React.FC<ProductCardProps> = ({
   imageSrc,
   productName,
   price,
@@ -25,17 +26,15 @@ const Card: React.FC<CardProps> = ({
   };
 
   return (
-    <div className="card-deck">
+    <div className="card-deck custom-card">
       <div className="card">
         <img className="card-img-top custom-img" src={imageSrc} alt="Product" />
         <div className="card-body">
           <h5 className="card-title">{productName}</h5>
           <p className="card-text">Price: ${price.toFixed(2)}</p>
           <div className="d-flex justify-content-between">
-            <button className="btn btn-primary">Add to Cart</button>
-            <button className="btn btn-secondary" onClick={displayDescription}>
-              Description
-            </button>
+            <Button onClick={() => {}} label="Add to Cart" isPrimary={true} />
+            <Button onClick={displayDescription} label="Description" />
           </div>
         </div>
 
@@ -54,4 +53,4 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-export default Card;
+export default ProductCard;
