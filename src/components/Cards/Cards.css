@@ -11,42 +11,63 @@
 .card{
     height: 30rem;
 }
+
+/* Styles for the pop-up window */
 .description-popup {
-    display: block;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #b3cce1; 
-    color: rgb(13, 1, 1);
-    padding: 20px;
-    border-radius: 10px;
-    z-index: 9999;
-  }
- 
-  .description-popup-content {
-    position: relative;
-  }
-  
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .close:hover {
-    color: red; 
-  }
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  max-width: 80%;
+}
 
-  
-  
-  
- 
-  
- 
-  
-  
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+}
 
-  
+.close:hover {
+  color: #e74c3c;
+}
+
+.description-popup-content h2 {
+  font-size: 1.5em;
+  color: #333;
+}
+
+.card-price {
+  margin-right: 3.1rem;
+}
+.price-rating {
+  margin-bottom: 10px;
+}
+.rating-value {
+  margin-left: 5px;
+  margin-top: 10rem;
+}
+
+
+.star-filled {
+  color: gold;
+}
+
+.star-half {
+  color: gold;
+}
+
+.star-unfilled {
+  color: rgb(135, 132, 132);
+}
+
+
+

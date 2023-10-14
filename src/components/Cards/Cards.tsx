@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import "./Cards.css";
-import Button from "../Button/Button";
 
 interface CardProps {
   imageSrc: string;
   productName: string;
   price: number;
   description: string;
+  category: string;
+  rating: number;
+  color: string;
+  gender: string;
+  renderStars: (rating: number) => React.ReactNode;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -14,6 +18,11 @@ const Card: React.FC<CardProps> = ({
   productName,
   price,
   description,
+  category,
+  rating,
+  color,
+  gender,
+  renderStars,
 }) => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
 
@@ -26,15 +35,21 @@ const Card: React.FC<CardProps> = ({
   };
 
   return (
-    <div className="card-deck custom-card">
+    <div className="card-deck">
       <div className="card">
         <img className="card-img-top custom-img" src={imageSrc} alt="Product" />
         <div className="card-body">
           <h5 className="card-title">{productName}</h5>
-          <p className="card-text">Price: ${price.toFixed(2)}</p>
+          <div className="price-rating">
+            <span className="card-price">Price: ${price.toFixed(2)}</span>
+            <span className="rating-stars">{renderStars(rating)}</span>
+            <span className="rating-value">{rating}</span>
+          </div>
           <div className="d-flex justify-content-between">
-            <Button onClick={() => {}} label="Add to Cart" isPrimary={true} />
-            <Button onClick={displayDescription} label="Description" />
+            <button className="btn btn-primary">Add to Cart</button>
+            <button className="btn btn-secondary" onClick={displayDescription}>
+              Description
+            </button>
           </div>
         </div>
 
@@ -44,7 +59,13 @@ const Card: React.FC<CardProps> = ({
               <span className="close" onClick={hideDescription}>
                 &times;
               </span>
-              <p>{description}</p>
+              <h2>{productName}</h2>
+              <p>{`Rating: ${rating}`}</p>
+              <p>{`Price: $${price}`}</p>
+              <p>{`Category: ${category}`}</p>
+              <p>{`Color: ${color}`}</p>
+              <p>{`Gender: ${gender}`}</p>
+              <p>{`Description: ${description}`}</p>
             </div>
           </div>
         )}

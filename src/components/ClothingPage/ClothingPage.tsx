@@ -4,6 +4,7 @@ import "./ClothingPage.css";
 import Filters from "../Filters/Filters";
 import mockClothingItems from "../../MOCK_DATA.json";
 import Navbar from "../Navbar/Navbar";
+import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 const ClothingPage: React.FC = () => {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
@@ -42,6 +43,38 @@ const ClothingPage: React.FC = () => {
   };
   const handlePriceChange = (price: string) => {
     setSelectedPrice(price);
+  };
+
+  const renderStars = (rating: number) => {
+    const stars = [];
+    const floorRating = Math.floor(rating);
+    const hasHalfStar = rating - floorRating >= 0.5;
+  
+    for (let i = 1; i <= 5; i++) {
+      if (i <= floorRating) {
+        stars.push(<FaStar key={i} className="star-filled" />);
+      } else if (hasHalfStar && i === floorRating + 1) {
+        stars.push(<FaStarHalfAlt key={i} className="star-half" />);
+      } else {
+        stars.push(<FaStar key={i} className="star-unfilled" />);
+      }
+    }
+  
+    return stars;
+    // const stars = [];
+    // const ceilRating = Math.ceil(rating);
+
+    // for (let i = 1; i <= 5; i++) {
+    //   if (i <= rating) {
+    //     stars.push(<FaStar key={i} />);
+    //   } else if (i === ceilRating && ceilRating !== rating) {
+    //     stars.push(<FaStarHalfAlt key={i} />);
+    //   } else {
+    //     stars.push(<FaRegStar key={i} />);
+    //   }
+    // }
+
+    // return stars;
   };
 
   useEffect(() => {
@@ -109,6 +142,11 @@ const ClothingPage: React.FC = () => {
                 productName={item.product_name}
                 price={item.price}
                 description={item.description}
+                category={item.category}
+                color={item.color}
+                rating={item.rating}
+                gender={item.gender}
+                renderStars={renderStars}
               />
             </div>
           ))}
