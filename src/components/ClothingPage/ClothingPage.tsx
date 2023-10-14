@@ -4,7 +4,7 @@ import "./ClothingPage.css";
 import Filters from "../Filters/Filters";
 import mockClothingItems from "../../MOCK_DATA.json";
 import Navbar from "../Navbar/Navbar";
-import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 const ClothingPage: React.FC = () => {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
@@ -49,7 +49,7 @@ const ClothingPage: React.FC = () => {
     const stars = [];
     const floorRating = Math.floor(rating);
     const hasHalfStar = rating - floorRating >= 0.5;
-  
+
     for (let i = 1; i <= 5; i++) {
       if (i <= floorRating) {
         stars.push(<FaStar key={i} className="star-filled" />);
@@ -59,22 +59,8 @@ const ClothingPage: React.FC = () => {
         stars.push(<FaStar key={i} className="star-unfilled" />);
       }
     }
-  
+
     return stars;
-    // const stars = [];
-    // const ceilRating = Math.ceil(rating);
-
-    // for (let i = 1; i <= 5; i++) {
-    //   if (i <= rating) {
-    //     stars.push(<FaStar key={i} />);
-    //   } else if (i === ceilRating && ceilRating !== rating) {
-    //     stars.push(<FaStarHalfAlt key={i} />);
-    //   } else {
-    //     stars.push(<FaRegStar key={i} />);
-    //   }
-    // }
-
-    // return stars;
   };
 
   useEffect(() => {
@@ -118,8 +104,8 @@ const ClothingPage: React.FC = () => {
   ]);
 
   return (
-    <div className="container clothing-page">
-      <div className="col-md-3">
+    <div className="clothing-page">
+      <div className="filter-class">
         <Filters
           selectedSizes={selectedSizes}
           onSizeChange={handleSizeChange}
@@ -132,11 +118,11 @@ const ClothingPage: React.FC = () => {
         />
       </div>
 
-      <div className="col-md-9">
+      <div className="col-md-9 card-container">
         <Navbar onGenderChange={handleGenderChange} />
         <div className="row">
           {filteredItems.map((item) => (
-            <div className="col-md-4 mb-4" key={item.id}>
+            <div className="col-md-2" key={item.id}>
               <Card
                 imageSrc={item.image_url}
                 productName={item.product_name}

@@ -1,9 +1,9 @@
 .filters-container {
-  padding: 20px;
+  padding: 25px;
   border: 1px solid #ccc;
   background-color: #f9f9f9;
   margin-right: 6rem; 
-  /* margin-left: ; */  /* adjust this in negative*/
+  margin-left: -1rem;  
 }
 
 .filter-section {
