@@ -24,21 +24,21 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
             className="navbar-menu-item"
             onClick={() => handleGenderChange("men")}
           >
-            Men
+            Men🧔🏻‍♂️
           </li>
           <li
             className="navbar-menu-item"
             onClick={() => handleGenderChange("women")}
           >
-            Women
+            Women👩🏻
           </li>
         </ul>
       </div>
       <div className="navbar-actions">
         <ul className="navbar-actions-list">
           {/* <li className="navbar-actions-item">Wishlist</li> */}
-          <li className="navbar-actions-item">Cart</li>
-          <li className="navbar-actions-item">Profile</li>
+          <button className="card-btn">Cart</button>
+          <button>Login/Register</button>
         </ul>
       </div>
     </nav>

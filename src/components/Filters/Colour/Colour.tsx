@@ -20,7 +20,7 @@ const Colour: React.FC<ColourProps> = ({ onColorChange }) => {
           value="red"
           onChange={handleColorChange}
         />
-        Red
+        Red 
       </label>
       <label>
         <input
@@ -29,7 +29,7 @@ const Colour: React.FC<ColourProps> = ({ onColorChange }) => {
           value="blue"
           onChange={handleColorChange}
         />
-        Blue
+        Blue 
       </label>
       <label>
         <input
@@ -47,7 +47,7 @@ const Colour: React.FC<ColourProps> = ({ onColorChange }) => {
           value="beige"
           onChange={handleColorChange}
         />
-        Beige
+        Orange 
       </label>
       <label>
         <input
@@ -65,7 +65,7 @@ const Colour: React.FC<ColourProps> = ({ onColorChange }) => {
           value="yellow"
           onChange={handleColorChange}
         />
-        Yellow
+        Yellow 
       </label>
     </div>
   );

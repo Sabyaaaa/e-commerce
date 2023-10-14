@@ -62,7 +62,13 @@ const ClothingPage: React.FC = () => {
 
     return stars;
   };
-
+  const handleRatingChange = (minRating: number) => {
+    // Handle rating change here, for example, filter by minimum rating
+    const filteredClothingItems = mockClothingItems.filter(
+      (item) => item.rating >= minRating
+    );
+    setFilteredItems(filteredClothingItems);
+  };
   useEffect(() => {
     const filteredClothingItems = mockClothingItems.filter((item) => {
       const passesSizeFilter =
@@ -115,6 +121,7 @@ const ClothingPage: React.FC = () => {
           onCategoryChange={handleCategoryChange}
           selectedPrice={selectedPrice}
           onPriceChange={handlePriceChange}
+          onRatingChange={handleRatingChange}
         />
       </div>
 

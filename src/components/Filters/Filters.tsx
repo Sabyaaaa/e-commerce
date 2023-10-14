@@ -4,6 +4,7 @@ import Category from "./Category/Category";
 import Colour from "./Colour/Colour";
 import Price from "./Price/Price";
 import Size from "./Size/Size";
+import RatingSlider from "./Rating/Rating";
 
 interface FiltersProps {
   selectedSizes: string[];
@@ -14,6 +15,7 @@ interface FiltersProps {
   onCategoryChange: (category: string) => void;
   selectedPrice: string | null;
   onPriceChange: (price: string) => void;
+  onRatingChange: (minRating: number) => void;
 }
 
 const Filters: React.FC<FiltersProps> = ({
@@ -25,12 +27,14 @@ const Filters: React.FC<FiltersProps> = ({
   onCategoryChange,
   selectedPrice,
   onPriceChange,
+  onRatingChange,
 }) => {
   return (
     <div className="filters-container">
       <h4>Filters</h4>
       <Category onCategoryChange={onCategoryChange} />
       <Size selectedSizes={selectedSizes} onSizeChange={onSizeChange} />
+      <RatingSlider onRatingChange={onRatingChange} />
       <Price onPriceChange={onPriceChange} />
       <Colour onColorChange={onColorChange} />
     </div>

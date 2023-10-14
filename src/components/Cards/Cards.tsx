@@ -88,16 +88,19 @@ const Card: React.FC<CardProps> = ({
                   <b>Material used: </b>
                   {materials}
                 </p>
-                
+
                 {/* <p>{`Gender: ${gender}`}</p> */}
                 <p>
                   <b>Description: </b>
                   {description}
                 </p>
                 <p>
-                  <b><i>Product will be delivered by </i></b>
+                  <b>
+                    <i>Product will be delivered by </i>
+                  </b>
                   <b>{delivery_date}</b>
                 </p>
+                <p className="returns"><i>14 days easy exchange/returns </i>🩷 </p>
               </div>
             </div>
           </div>
