@@ -11,8 +11,6 @@ interface CardProps {
   color: string;
   gender: string;
   size: string;
-  image_url2: string;
-  delivery_date: string;
   materials: string;
   renderStars: (rating: number) => React.ReactNode;
 }
@@ -27,8 +25,6 @@ const Card: React.FC<CardProps> = ({
   color,
   gender,
   size,
-  image_url2,
-  delivery_date,
   materials,
   renderStars,
 }) => {
@@ -49,7 +45,7 @@ const Card: React.FC<CardProps> = ({
         <div className="card-body">
           <h5 className="card-title">{productName}</h5>
           <div className="price-rating">
-            <span className="card-price">Price: ${price.toFixed(2)}</span>
+            <span className="card-price">Price: ₹{price}</span>
             <span className="rating-stars">{renderStars(rating)}</span>
             <span className="rating-value">{rating}</span>
           </div>
@@ -68,7 +64,7 @@ const Card: React.FC<CardProps> = ({
                 &times;
               </span>
               <h2>{productName}</h2>
-              <img className="description-img" src={image_url2} alt="product" />
+              <img className="description-img" src={imageSrc} alt="product" />
               {/* <p>{`Rating: ${rating}`}</p> */}
               {/* <p>{`Price: $${price}`}</p> */}
               <div className="des-content">
@@ -96,9 +92,8 @@ const Card: React.FC<CardProps> = ({
                 </p>
                 <p>
                   <b>
-                    <i>Product will be delivered by </i>
+                    <i>Product will be delivered within 7 days</i>
                   </b>
-                  <b>{delivery_date}</b>
                 </p>
                 <p className="returns"><i>14 days easy exchange/returns </i>🩷 </p>
               </div>

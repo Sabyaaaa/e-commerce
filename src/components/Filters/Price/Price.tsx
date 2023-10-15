@@ -7,7 +7,7 @@ interface PriceProps {
 
 const Price: React.FC<PriceProps> = ({ onPriceChange }) => {
   const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(100);
+  const [maxPrice, setMaxPrice] = useState(2999);
 
   const handleMinPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(event.target.value);
@@ -43,7 +43,7 @@ const Price: React.FC<PriceProps> = ({ onPriceChange }) => {
             placeholder="Max Price"
             value={maxPrice}
             onChange={handleMaxPriceChange}
-            style={{ width: "80%" }}
+            style={{ width: "90%" }}
             id="maxPrice"
           />
         </div>
@@ -52,7 +52,7 @@ const Price: React.FC<PriceProps> = ({ onPriceChange }) => {
         <input
           type="range"
           min={0}
-          max={100}
+          max={2999}
           step={1}
           value={minPrice}
           onChange={handleMinPriceChange}

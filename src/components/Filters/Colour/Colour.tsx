@@ -44,10 +44,28 @@ const Colour: React.FC<ColourProps> = ({ onColorChange }) => {
         <input
           type="checkbox"
           name="color"
-          value="beige"
+          value="orange"
           onChange={handleColorChange}
         />
         Orange 
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          name="color"
+          value="beige"
+          onChange={handleColorChange}
+        />
+        Beige 
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          name="color"
+          value="white"
+          onChange={handleColorChange}
+        />
+        White 
       </label>
       <label>
         <input

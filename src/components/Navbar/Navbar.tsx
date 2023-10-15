@@ -1,19 +1,72 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Navbar.css";
 
-// import {AiOutlineShoppingCart, AiOutlineUserAdd} from "react-icons/ai";
 interface NavbarProps {
   onGenderChange: (gender: string) => void;
 }
+
 const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
+  useEffect(() => {
+    const canvas = document.querySelector("canvas");
+
+    if (canvas) {
+      const context = canvas.getContext("2d");
+      const navHeight = 80;
+      const waveStretch = 10;
+      const waveLength = 0.01;
+      let velocity = 0.01;
+
+      const resizeCanvas = () => {
+        if (canvas) {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+      };
+
+      window.addEventListener("resize", resizeCanvas);
+
+      const animate = () => {
+        if (context && canvas) {
+          requestAnimationFrame(animate);
+          context.clearRect(0, 0, canvas.width, canvas.height);
+
+          for (let i = 0; i < window.innerWidth; i += 0.5) {
+            context.save();
+            context.beginPath();
+            context.moveTo(i, 0);
+            context.lineTo(
+              i,
+              navHeight + Math.sin(i * waveLength + velocity) * waveStretch
+            );
+            context.strokeStyle = "#5C5CFF";
+            context.stroke();
+            context.closePath();
+            context.restore();
+          }
+
+          velocity += 0.1;
+        }
+      };
+
+      resizeCanvas();
+      animate();
+
+      return () => {
+        window.removeEventListener("resize", resizeCanvas);
+      };
+    }
+  }, []);
+
   const handleGenderChange = (gender: string) => {
     onGenderChange(gender);
   };
+
   return (
     <nav className="navbar">
-      <div className="navbar-brand">
+      <canvas id="canvas"></canvas>
+      <div className="brand-logo">
         <img
-          src="https://i.pinimg.com/474x/f5/ae/c9/f5aec9c889e1c28268b62e0472a9f33b.jpg"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6baaublXNGVY3ZGg4DIQAfOU89md35NcJbA&usqp=CAU"
           alt="Brand Logo"
           className="brand-logo"
         />
@@ -24,21 +77,20 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
             className="navbar-menu-item"
             onClick={() => handleGenderChange("men")}
           >
-            Men🧔🏻‍♂️
+            MEN
           </li>
           <li
             className="navbar-menu-item"
             onClick={() => handleGenderChange("women")}
           >
-            Women👩🏻
+            WOMEN
           </li>
         </ul>
       </div>
       <div className="navbar-actions">
         <ul className="navbar-actions-list">
-          {/* <li className="navbar-actions-item">Wishlist</li> */}
           <button className="card-btn">Cart</button>
-          <button>Login/Register</button>
+          <button className="card-btn card-btn-1">Login/Register</button>
         </ul>
       </div>
     </nav>
