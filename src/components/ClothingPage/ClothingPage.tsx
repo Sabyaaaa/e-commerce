@@ -41,9 +41,7 @@ const ClothingPage: React.FC = () => {
         : [...prevCategories, category]
     );
   };
-  const handlePriceChange = (price: string) => {
-    setSelectedPrice(price);
-  };
+ 
 
   const renderStars = (rating: number) => {
     const stars = [];
@@ -62,12 +60,8 @@ const ClothingPage: React.FC = () => {
 
     return stars;
   };
-  const handleRatingChange = (minRating: number) => {
-    // Handle rating change here, for example, filter by minimum rating
-    const filteredClothingItems = mockClothingItems.filter(
-      (item) => item.rating >= minRating
-    );
-    setFilteredItems(filteredClothingItems);
+  const handlePriceChange = (minPrice: number, maxPrice: number) => {
+    setSelectedPrice(`${minPrice}-${maxPrice}`);
   };
   useEffect(() => {
     const filteredClothingItems = mockClothingItems.filter((item) => {
@@ -121,7 +115,7 @@ const ClothingPage: React.FC = () => {
           onCategoryChange={handleCategoryChange}
           selectedPrice={selectedPrice}
           onPriceChange={handlePriceChange}
-          onRatingChange={handleRatingChange}
+         
         />
       </div>
 
