@@ -23,7 +23,6 @@ const Card: React.FC<CardProps> = ({
   category,
   rating,
   color,
-  gender,
   size,
   materials,
   renderStars,
@@ -65,8 +64,6 @@ const Card: React.FC<CardProps> = ({
               </span>
               <h2>{productName}</h2>
               <img className="description-img" src={imageSrc} alt="product" />
-              {/* <p>{`Rating: ${rating}`}</p> */}
-              {/* <p>{`Price: $${price}`}</p> */}
               <div className="des-content">
                 <p>
                   <b>Size: </b>
@@ -84,8 +81,6 @@ const Card: React.FC<CardProps> = ({
                   <b>Material used: </b>
                   {materials}
                 </p>
-
-                {/* <p>{`Gender: ${gender}`}</p> */}
                 <p>
                   <b>Description: </b>
                   {description}
