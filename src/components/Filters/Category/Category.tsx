@@ -40,7 +40,7 @@ const Category: React.FC<CategoryProps> = ({ onCategoryChange }) => {
         />
         Shirts
       </label>
-      <label>
+      {/* <label>
         <input
           type="checkbox"
           name="category"
@@ -48,7 +48,7 @@ const Category: React.FC<CategoryProps> = ({ onCategoryChange }) => {
           onChange={handleCategoryChange}
         />
         Trousers
-      </label>
+      </label> */}
       <label>
         <input
           type="checkbox"
