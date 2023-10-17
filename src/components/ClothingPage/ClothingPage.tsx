@@ -62,6 +62,11 @@ const ClothingPage: React.FC = () => {
   const handlePriceChange = (minPrice: number, maxPrice: number) => {
     setSelectedPrice(`${minPrice}-${maxPrice}`);
   };
+
+  const handleAddToCart = (productName: string, selectedSize: string) => {
+    // Implement logic to add the item to the cart based on the selected size
+    alert("Item added to cart:\nProduct Name: " + productName + "\nSize: " + selectedSize);
+  };
   useEffect(() => {
     const filteredClothingItems = mockClothingItems.filter((item) => {
       const passesSizeFilter =
@@ -142,11 +147,12 @@ const ClothingPage: React.FC = () => {
                 category={item.category}
                 color={item.color}
                 rating={item.rating}
-                gender={item.gender}
+                // gender={item.gender}
                 sizes={item.sizes}
                 materials={item.material}
                 quantity={item.quantity}
                 renderStars={renderStars}
+                onAddToCart={handleAddToCart}
               />
             </div>
           ))}

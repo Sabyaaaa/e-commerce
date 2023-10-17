@@ -10,13 +10,12 @@ interface CardProps {
   category: string;
   rating: number;
   color: string;
-  gender: string;
+  // gender: string;
   sizes: string[];
   materials: string;
-  quantity: {
-    [size: string]: number;
-  };
+  quantity: Record<string, number>;
   renderStars: (rating: number) => React.ReactNode;
+  onAddToCart: (productName: string, selectedSize: string) => void;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -31,15 +30,31 @@ const Card: React.FC<CardProps> = ({
   materials,
   quantity,
   renderStars,
+  onAddToCart,
 }) => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
+  const handleAddToCartClick = () => {
+    if (selectedSize) {
+      onAddToCart(productName, selectedSize);
+      // alert("Item added");
+    } else {
+      alert("Please select a size.");
+    }
+  };
   const displayDescription = () => {
     setIsDescriptionVisible(true);
   };
 
   const hideDescription = () => {
     setIsDescriptionVisible(false);
+  };
+  // Reset the selected size when popup is closed
+  const handlePopupClose = () => {
+    setIsPopupVisible(false);
+    setSelectedSize(null);
   };
 
   return (
@@ -54,7 +69,11 @@ const Card: React.FC<CardProps> = ({
             <span className="rating-value">{rating}</span>
           </div>
           <div className="d-flex justify-content-between">
-            <Button label="Add to Cart" className="btn btn-primary" />
+            <Button
+              label="Add to Cart"
+              className="btn btn-primary"
+              onClick={() => setIsPopupVisible(true)}
+            />
             <Button
               label="Description"
               className="btn btn-secondary"
@@ -62,7 +81,7 @@ const Card: React.FC<CardProps> = ({
             />
           </div>
         </div>
-
+        {/* Pop-up for displaying Description */}
         {isDescriptionVisible && (
           <div className="description-popup">
             <div className="description-popup-content">
@@ -75,8 +94,7 @@ const Card: React.FC<CardProps> = ({
                 <p>
                   <b>Sizes:</b>{" "}
                   {sizes
-                  // Filter sizes with quantity > 0
-                    .filter((size) => quantity[size] > 0) 
+                    .filter((size) => quantity[size] > 0) // Filter sizes with quantity > 0
                     .join(", ")}
                 </p>
 
@@ -105,6 +123,37 @@ const Card: React.FC<CardProps> = ({
                   <i>14 days easy exchange/returns </i>🩷{" "}
                 </p>
               </div>
+            </div>
+          </div>
+        )}
+        {/* New popup for selecting a size */}
+        {isPopupVisible && (
+          <div className="popup">
+            <div className="popup-content">
+              <span className="close" onClick={handlePopupClose}>
+                &times;
+              </span>
+              <h2>Select Size</h2>
+              <div className="size-selection">
+                {sizes
+                  .filter((size) => quantity[size] > 0)
+                  .map((size) => (
+                    <button
+                      key={size}
+                      className={`size-button ${
+                        selectedSize === size ? "selected" : ""
+                      }`}
+                      onClick={() => setSelectedSize(size)}
+                    >
+                      {size}
+                    </button>
+                  ))}
+              </div>
+              <Button
+                label="Add"
+                className="btn btn-primary"
+                onClick={handleAddToCartClick}
+              />
             </div>
           </div>
         )}
