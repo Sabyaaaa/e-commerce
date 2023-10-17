@@ -1,5 +1,4 @@
 import React from "react";
-import "./Colour.css";
 
 interface ColourProps {
   onColorChange: (color: string) => void;

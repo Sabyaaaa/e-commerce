@@ -2,16 +2,12 @@
   display: flex;
   flex-wrap: wrap;
   padding: 25px;
-  /* margin-left: 10px; */
-  /* margin-right: -20rem; */
-  /* align-items: center; */
 }
 .card-container {
   margin-left: 63px;
 }
 .card {
   margin: 0 100px -80px -110px;
-  /* width: 15rem; */
 }
 
 .card-title {

@@ -1,5 +1,4 @@
 import React from "react";
-import "./Category.css";
 
 interface CategoryProps {
   onCategoryChange: (category: string) => void;

@@ -1,6 +1,4 @@
 import React from "react";
-import "./Size.css";
-
 interface SizeProps {
     selectedSizes: string[];
     onSizeChange: (size: string) => void;
