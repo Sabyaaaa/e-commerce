@@ -11,7 +11,7 @@ interface CardProps {
   rating: number;
   color: string;
   gender: string;
-  size: string;
+  sizes: string[];
   materials: string;
   renderStars: (rating: number) => React.ReactNode;
 }
@@ -24,7 +24,7 @@ const Card: React.FC<CardProps> = ({
   category,
   rating,
   color,
-  size,
+  sizes,
   materials,
   renderStars,
 }) => {
@@ -51,7 +51,11 @@ const Card: React.FC<CardProps> = ({
           </div>
           <div className="d-flex justify-content-between">
             <Button label="Add to Cart" className="btn btn-primary" />
-            <Button label="Description" className="btn btn-secondary" onClick={displayDescription} />
+            <Button
+              label="Description"
+              className="btn btn-secondary"
+              onClick={displayDescription}
+            />
           </div>
         </div>
 
@@ -65,9 +69,9 @@ const Card: React.FC<CardProps> = ({
               <img className="description-img" src={imageSrc} alt="product" />
               <div className="des-content">
                 <p>
-                  <b>Size: </b>
-                  {size}
+                  <b>Sizes:</b> {sizes.join(", ")}
                 </p>
+
                 <p>
                   <b>Category: </b>
                   {category}

@@ -230,7 +230,7 @@
         },
         "gender": "men",
         "description": "Hoodie in sweatshirt fabric made from a cotton blend. Relaxed fit with a jersey-lined, drawstring hood, a kangaroo pocket, long sleeves and wide ribbing at the cuffs and hem. Soft brushed inside.",
-        "image_url": "https://lp2.hm.com/hmgoepprod?set=source[/4b/a6/4ba60a1a7c96d9ad18c21313d425e40b59eef925.jpg],origin[dam],category[men_hoodiessweatshirts_hoodies],type[DESCRIPTIVESTILLLIFE],res[y],hmver[2]&call=url[file:/product/main]",
+        "image_url": "https://lp2.hm.com/hmgoepprod?set=source[/d0/4b/d04bea90b51e326af8949d3434da473802b1d9ca.jpg],origin[dam],category[],type[DESCRIPTIVESTILLLIFE],res[y],hmver[2]&call=url[file:/product/main]",
         "rating": 4.0,
         "category": "hoodie",
         "material": "Cotton 88%, Polyester 12%"
@@ -326,7 +326,7 @@
     {
         "id": 16,
         "product_name": "Regular fit sweater",
-        "price": 73.61,
+        "price": 999,
         "sizes": [
             "small",
             "medium",

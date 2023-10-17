@@ -65,9 +65,9 @@ const ClothingPage: React.FC = () => {
   };
   useEffect(() => {
     const filteredClothingItems = mockClothingItems.filter((item) => {
-      const passesSizeFilter =
-        selectedSizes.length === 0 ||
-        selectedSizes.includes(item.size.toLowerCase());
+      const passesSizeFilter = selectedSizes.length > 0
+        ? selectedSizes.some(size => item.sizes.includes(size.toLowerCase()))
+        : true;
       const passesColorFilter =
         selectedColors.length === 0 ||
         selectedColors.includes(item.color.toLowerCase());
@@ -133,7 +133,7 @@ const ClothingPage: React.FC = () => {
                 color={item.color}
                 rating={item.rating}
                 gender={item.gender}
-                size={item.size}
+                sizes={item.sizes}
                 materials={item.material}
                 renderStars={renderStars}
               />
