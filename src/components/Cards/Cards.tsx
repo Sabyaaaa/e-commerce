@@ -138,15 +138,14 @@ const Card: React.FC<CardProps> = ({
                 {sizes
                   .filter((size) => quantity[size] > 0)
                   .map((size) => (
-                    <button
+                    <Button
                       key={size}
+                      label={size}
                       className={`size-button ${
                         selectedSize === size ? "selected" : ""
                       }`}
                       onClick={() => setSelectedSize(size)}
-                    >
-                      {size}
-                    </button>
+                    />
                   ))}
               </div>
               <Button

@@ -99,8 +99,8 @@
         ],
         "color": "red",
         "quantity": {
-            "small": 0,
-            "medium": 3,
+            "small": 7,
+            "medium": 0,
             "large": 5
         },
         "gender": "women",
@@ -121,7 +121,7 @@
         ],
         "color": "orange",
         "quantity": {
-            "small": 1,
+            "small": 0,
             "medium": 3,
             "large": 2
         },
