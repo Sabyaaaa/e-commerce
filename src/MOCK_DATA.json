@@ -27,12 +27,14 @@
         "price": 1999,
         "sizes": [
             "small",
-            "medium"
+            "medium",
+            "large"
         ],
         "color": "pink",
         "quantity": {
             "small": 5,
-            "medium": 2
+            "medium": 2,
+            "large": 0
         },
         "gender": "women",
         "description": "Short jumper in a soft cable knit containing some wool. Ribbed polo neck, low dropped shoulders and long sleeves. Ribbing at the cuffs and hem.",
@@ -46,11 +48,13 @@
         "product_name": "Rib-knit top",
         "price": 1299,
         "sizes": [
+            "small",
             "medium",
             "large"
         ],
         "color": "black",
         "quantity": {
+            "small": 4,
             "medium": 3,
             "large": 2
         },
@@ -67,11 +71,15 @@
         "product_name": "Motif-detail sweatshirt",
         "price": 1999,
         "sizes": [
-            "small"
+            "small",
+            "medium",
+            "large"
         ],
         "color": "white",
         "quantity": {
-            "small": 8
+            "small": 8,
+            "medium": 3,
+            "large": 5
         },
         "gender": "women",
         "description": "Top in sweatshirt fabric with a motif on the front. Round, rib-trimmed neckline, long raglan sleeves and ribbing at the cuffs and hem.",
@@ -91,9 +99,9 @@
         ],
         "color": "red",
         "quantity": {
-            "small": 2,
+            "small": 0,
             "medium": 3,
-            "large": 0
+            "large": 5
         },
         "gender": "women",
         "description": "Fitted top in soft cotton jersey with a round neckline and lace-trimmed flutter sleeves.",

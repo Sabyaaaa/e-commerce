@@ -41,7 +41,6 @@ const ClothingPage: React.FC = () => {
         : [...prevCategories, category]
     );
   };
- 
 
   const renderStars = (rating: number) => {
     const stars = [];
@@ -65,9 +64,21 @@ const ClothingPage: React.FC = () => {
   };
   useEffect(() => {
     const filteredClothingItems = mockClothingItems.filter((item) => {
-      const passesSizeFilter = selectedSizes.length > 0
-        ? selectedSizes.some(size => item.sizes.includes(size.toLowerCase()))
-        : true;
+      const passesSizeFilter =
+        selectedSizes.length > 0
+          ? selectedSizes.some((size) => {
+              const validSizes: ("small" | "medium" | "large")[] = [
+                "small",
+                "medium",
+                "large",
+              ];
+              return (
+                validSizes.includes(size as "small" | "medium" | "large") &&
+                item.quantity[size as "small" | "medium" | "large"] > 0
+              );
+            })
+          : true;
+
       const passesColorFilter =
         selectedColors.length === 0 ||
         selectedColors.includes(item.color.toLowerCase());
@@ -115,7 +126,6 @@ const ClothingPage: React.FC = () => {
           onCategoryChange={handleCategoryChange}
           selectedPrice={selectedPrice}
           onPriceChange={handlePriceChange}
-         
         />
       </div>
 
@@ -135,6 +145,7 @@ const ClothingPage: React.FC = () => {
                 gender={item.gender}
                 sizes={item.sizes}
                 materials={item.material}
+                quantity={item.quantity}
                 renderStars={renderStars}
               />
             </div>

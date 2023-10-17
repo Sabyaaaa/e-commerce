@@ -13,6 +13,9 @@ interface CardProps {
   gender: string;
   sizes: string[];
   materials: string;
+  quantity: {
+    [size: string]: number;
+  };
   renderStars: (rating: number) => React.ReactNode;
 }
 
@@ -26,6 +29,7 @@ const Card: React.FC<CardProps> = ({
   color,
   sizes,
   materials,
+  quantity,
   renderStars,
 }) => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
@@ -69,7 +73,11 @@ const Card: React.FC<CardProps> = ({
               <img className="description-img" src={imageSrc} alt="product" />
               <div className="des-content">
                 <p>
-                  <b>Sizes:</b> {sizes.join(", ")}
+                  <b>Sizes:</b>{" "}
+                  {sizes
+                  // Filter sizes with quantity > 0
+                    .filter((size) => quantity[size] > 0) 
+                    .join(", ")}
                 </p>
 
                 <p>
