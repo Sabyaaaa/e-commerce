@@ -8,11 +8,9 @@
     height: 2.5rem;
     z-index: 99999;
   }
-  .card-btn:hover {
+  .btn:hover, .card-btn:hover {
     background-color: #2136d0;
   }
   .card-btn-1 {
     width: 8rem;
   }
-
-  
