@@ -1,20 +1,12 @@
 import React from "react";
 import "./Button.css";
-
 interface ButtonProps {
-  onClick: () => void;
   label: string;
-  isPrimary?: boolean; 
+  className: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ onClick, label, isPrimary }) => {
-  const buttonClass = isPrimary ? "btn btn-primary" : "btn btn-secondary";
-
-  return (
-    <button className={buttonClass} onClick={onClick}>
-      {label}
-    </button>
-  );
+const Button: React.FC<ButtonProps> = ({ label, className }) => {
+  return <button className={className}>{label}</button>;
 };
 
 export default Button;

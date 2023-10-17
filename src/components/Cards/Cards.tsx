@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Cards.css";
+import Button from "../Button/Button";
 
 interface CardProps {
   imageSrc: string;
@@ -49,10 +50,12 @@ const Card: React.FC<CardProps> = ({
             <span className="rating-value">{rating}</span>
           </div>
           <div className="d-flex justify-content-between">
-            <button className="btn btn-primary">Add to Cart</button>
+            <Button label="Add to Cart" className="btn btn-primary" />
+            <Button label="Description" className="btn btn-secondary" />
+            {/* <button className="btn btn-primary">Add to Cart</button>
             <button className="btn btn-secondary" onClick={displayDescription}>
               Description
-            </button>
+            </button> */}
           </div>
         </div>
 
@@ -90,7 +93,9 @@ const Card: React.FC<CardProps> = ({
                     <i>Product will be delivered within 7 days</i>
                   </b>
                 </p>
-                <p className="returns"><i>14 days easy exchange/returns </i>🩷 </p>
+                <p className="returns">
+                  <i>14 days easy exchange/returns </i>🩷{" "}
+                </p>
               </div>
             </div>
           </div>

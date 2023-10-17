@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./Navbar.css";
+import Button from "../Button/Button";
 
 interface NavbarProps {
   onGenderChange: (gender: string) => void;
@@ -89,8 +90,8 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
       </div>
       <div className="navbar-actions">
         <ul className="navbar-actions-list">
-          <button className="card-btn">Cart</button>
-          <button className="card-btn card-btn-1">Login/Register</button>
+          <Button label="Cart" className="card-btn" />
+          <Button label="Login/Register" className="card-btn card-btn-1" />
         </ul>
       </div>
     </nav>

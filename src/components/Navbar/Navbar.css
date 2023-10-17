@@ -58,19 +58,3 @@ body {
   margin: 0 20px;
   cursor: pointer;
 }
-
-.card-btn {
-  border-radius: 5px;
-  border-style: none;
-  background-color: #39afe6;
-  color: white;
-  margin-left: 15px;
-  height: 2.5rem;
-  z-index: 99999;
-}
-.card-btn:hover {
-  background-color: #2136d0;
-}
-.card-btn-1 {
-  width: 8rem;
-}
