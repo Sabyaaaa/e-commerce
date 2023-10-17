@@ -51,11 +51,7 @@ const Card: React.FC<CardProps> = ({
           </div>
           <div className="d-flex justify-content-between">
             <Button label="Add to Cart" className="btn btn-primary" />
-            <Button label="Description" className="btn btn-secondary" />
-            {/* <button className="btn btn-primary">Add to Cart</button>
-            <button className="btn btn-secondary" onClick={displayDescription}>
-              Description
-            </button> */}
+            <Button label="Description" className="btn btn-secondary" onClick={displayDescription} />
           </div>
         </div>
 
