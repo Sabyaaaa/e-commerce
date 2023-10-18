@@ -1,27 +1,26 @@
-*{
+* {
     margin: 0;
     padding: 0;
-}
-
-
-.button{
-    width: 40%;
-    margin: 5px;
-    padding: 8px;
-    // margin-left: 20px;
-    // margin-top: 30px;
-    // font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    // font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    // background-color: rgb(127, 189, 244);
-    // background-color: #CD5C08;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: medium;
-    cursor: pointer;
-    // color: #193c2d;
-    display: block;
-    // transform: translateX(80%);
-    // justify-content: center;
-    // align-items: center;
-}
+  }
+  $width-button: 40%;
+  $margin-button: 5px;
+  $padding-button: 8px;
+  $border-button: none;
+  $border-radius-button: 8px;
+  $font-weight-button: bold;
+  $font-size-button: medium;
+  $cursor-button: pointer;
+  $display-button: block;
+  
+  .button {
+    width: $width-button;
+    margin: $margin-button;
+    padding: $padding-button;
+    border: $border-button;
+    border-radius: $border-radius-button;
+    font-weight: $font-weight-button;
+    font-size: $font-size-button;
+    cursor: $cursor-button;
+    display: $display-button;
+  }
+  
