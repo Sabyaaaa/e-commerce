@@ -1,0 +1,28 @@
+.label {
+  line-height: 1.2;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  font-family: "Roboto", sans-serif;
+
+}
+.input-field {
+  width: 90%;
+  padding: 12px;
+  border: none;
+  margin-top: 5px;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  background-color: #dbdada;
+  font-size: 1rem;
+  border-radius: 4px;
+  font-family: "Roboto", sans-serif;
+
+  // &:focus {
+  //   outline: none;
+  //   border-color: #000;
+  // }
+
+  &::placeholder {
+    color: #858181;
+  }
+}
