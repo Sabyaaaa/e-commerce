@@ -39,7 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
               i,
               navHeight + Math.sin(i * waveLength + velocity) * waveStretch
             );
-            context.strokeStyle = "#5C5CFF";
+            context.strokeStyle = "#F8C8DC";
             context.stroke();
             context.closePath();
             context.restore();
@@ -68,6 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
       <div className="brand-logo">
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6baaublXNGVY3ZGg4DIQAfOU89md35NcJbA&usqp=CAU"
+          // src="src/logo.png"
           alt="Brand Logo"
           className="brand-logo"
         />

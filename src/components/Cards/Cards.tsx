@@ -73,12 +73,12 @@ const Card: React.FC<CardProps> = ({
           <div className="d-flex justify-content-between">
             <Button
               label="Add to Cart"
-              className="btn btn-primary"
+              className="btn-1"
               onClick={() => setIsPopupVisible(true)}
             />
             <Button
               label="Description"
-              className="btn btn-secondary"
+              className="btn-2"
               onClick={displayDescription}
             />
           </div>
@@ -152,7 +152,7 @@ const Card: React.FC<CardProps> = ({
               </div>
               <Button
                 label="Add"
-                className="btn btn-primary"
+                className="btn"
                 onClick={handleAddToCartClick}
               />
             </div>
