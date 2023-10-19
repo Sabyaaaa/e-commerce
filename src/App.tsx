@@ -1,14 +1,20 @@
 import React from "react";
 import Register from "./components/Register/Register";
-// import ReactDOM from "react-dom";
+// import Login from "./components/Login";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
  
 const App: React.FC = () => {
   return (
+    <Router>
     <div className="container">
-    <Register/>
+      <Routes>
+        {/* <Route path = "/Login" element = {<Login/>}/> */}
+        <Route path = "/" element = {<Register/>}/>
+      </Routes>
+    
     </div>
-
+    </Router>
   );
 };
  

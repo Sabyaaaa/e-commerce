@@ -1,16 +1,26 @@
 import React, { useState } from "react";
 import InputField from "./InputField";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Button from "./Button";
-// import image from "../images.jpg";
 import "./Register.scss";
+import { useNavigate } from "react-router-dom";
 
 const RegistrationPage: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [address, setAddress] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedState, setSelectedState] = useState("");
   const [dob, setDob] = useState("");
   const [error, setError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  // const[showToast, setShowToast] = useState(false);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -24,25 +34,74 @@ const RegistrationPage: React.FC = () => {
     setPassword(e.target.value);
   };
 
-  const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAddress(e.target.value);
+  const handleConfirmPasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setConfirmPassword(e.target.value);
+  };
+
+  const handleStreetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setStreet(e.target.value);
+  };
+
+  const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCity(e.target.value);
+  };
+
+  const handleStateChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedState(e.target.value);
+  };
+
+  const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputZipCode = e.target.value;
+
+    if (/^\d+$/.test(inputZipCode)) {
+      setZipCode(inputZipCode);
+      setError("");
+    } else {
+      setError("Please enter a numeric value for the zip code.");
+    }
+  };
+
+  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCountry(e.target.value);
   };
 
   const handleDobChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDob(e.target.value);
+    const inputDob = e.target.value;
+    setDob(inputDob);
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(inputDob)) {
+      setError("Invalid date format (YYYY-MM-DD)");
+    } else {
+      const selectedDate = new Date(inputDob);
+      const currentDate = new Date();
+
+      if (selectedDate > currentDate) {
+        setError("Date of Birth cannot be a future date.");
+      } else {
+        setError("");
+      }
+    }
+  };
+  const naviagte = useNavigate();
+
+  const handleLogin = () => {
+    naviagte("/login");
   };
 
-  const handleSignUP = () => {
+  const handleSignUp = () => {
     setError("");
 
-    if (!name || !email || !password || !address || !dob) {
-      setError("Please fill all the fields.");
-      return;
+    if (!name || !email || !password || !confirmPassword || !dob) {
+      setError("Please fill all the mandatory fields.");
+    } else {
+      setError("");
     }
 
     const isEmailValid = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.test(email);
     if (!isEmailValid) {
-      setError("Please enter a valid email address.");
+      setEmailError("Please enter a valid email address.");
       return;
     }
 
@@ -54,12 +113,23 @@ const RegistrationPage: React.FC = () => {
       return;
     }
 
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
     const postData = {
       name: name,
       email: email,
       password: password,
-      address: address,
       dob: dob,
+      address: {
+        street: street,
+        city: city,
+        state: selectedState,
+        zipCode: zipCode,
+        country: selectedCountry,
+      },
     };
 
     fetch("http://localhost:3000/users", {
@@ -68,38 +138,47 @@ const RegistrationPage: React.FC = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(postData),
-    }).then((data) => {
-      console.log(data);
-      if (data) {
-        alert("Registration successful!");
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          toast.success("Registration successful!");
+          // naviagte("/login");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
 
-      }
-    });
+
   };
 
   return (
     <div className="form-container">
-      {/* <img src={image} alt="My Image" className="header-image" /> */}
-      <h2 className="h2">Register Here!</h2>
+      <h1 className="register">Register Here!</h1>
+      <h3 className="personal-info">Personal Information</h3>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
       <InputField
         label="Name"
-        type="name"
-        name="Name"
+        type="text"
+        name="name"
         placeHolder="Enter Your Name"
         value={name}
         onChange={handleNameChange}
+        mandatory={true}
       />
 
       <InputField
         label="Email"
         type="email"
-        placeHolder="Enter Your Email"
         name="email"
+        placeHolder="Enter Your Email"
         value={email}
         onChange={handleEmailChange}
+        mandatory={true}
       />
 
       <InputField
@@ -109,29 +188,103 @@ const RegistrationPage: React.FC = () => {
         placeHolder="Enter Your Password"
         value={password}
         onChange={handlePasswordChange}
+        mandatory={true}
       />
 
       <InputField
-        label="Address"
-        type="address"
-        name="address"
-        placeHolder="Enter Your Address"
-        value={address}
-        onChange={handleAddressChange}
+        label="Confirm Password"
+        type="password"
+        name="confirmPassword"
+        placeHolder="Confirm Your Password"
+        value={confirmPassword}
+        onChange={handleConfirmPasswordChange}
+        mandatory={true}
       />
 
       <InputField
         label="DOB"
-        type="Date"
+        type="date"
         name="dob"
-        placeHolder="Enter Your Dob"
+        placeHolder="DD-MM-YYYY"
         value={dob}
         onChange={handleDobChange}
+        mandatory={true}
       />
-      <Button label="Register" onClick={handleSignUP} />
+
+      <h3 className="address-info">Address Information</h3>
+
+      <InputField
+        label="Street Address"
+        type="text"
+        name="street"
+        placeHolder="Enter Your Street Address"
+        value={street}
+        onChange={handleStreetChange}
+        mandatory={false}
+      />
+
+      <InputField
+        label="City"
+        type="text"
+        name="city"
+        placeHolder="Enter Your City"
+        value={city}
+        onChange={handleCityChange}
+        mandatory={false}
+      />
+
+      <InputField
+        label="Zip Code"
+        type="text"
+        name="zipCode"
+        placeHolder="Enter Your Zip Code"
+        value={zipCode}
+        onChange={handleZipCodeChange}
+        mandatory={false}
+      />
+
+      <label className="label">State</label>
+      <div className="select">
+        <select
+          name="state"
+          value={selectedState}
+          onChange={handleStateChange}
+          placeholder="Enter Your State"
+          required
+        >
+          <option value="">Select State</option>
+          <option value="Madhya Pradesh">Madhya Pradesh</option>
+          <option value="Uttar Pradesh">Uttar Pradesh</option>
+          <option value="Chhattisgarh">Chhattisgarh</option>
+        </select>
+      </div>
+
+      <label className="label">Country</label>
+      <div className="select">
+        <select
+          name="country"
+          value={selectedCountry}
+          onChange={handleCountryChange}
+          placeholder="Enter Your State"
+          required
+        >
+          <option value="">Select Country</option>
+          <option value="USA">USA</option>
+          <option value="Canada">Canada</option>
+          <option value="India">India</option>
+        </select>
+      </div>
+
+      <Button label="Register" onClick={handleSignUp} />
+      <div className="p">
+        <p>Already have an account?</p>
+        <p className="loginClick" onClick={handleLogin}>
+          Login Here!
+        </p>
+      </div>
+      <ToastContainer />
     </div>
   );
 };
 
 export default RegistrationPage;
-

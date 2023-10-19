@@ -1,14 +1,16 @@
 import React from "react";
-import "./InputField.scss";
+// import "./.scss";
+
 interface InputFieldProps {
-  label:string;
+  label: string;
   placeHolder: string;
   type: string;
   name: string;
   value: string;
+  mandatory:boolean;
+  // autoComplete:string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-
 const InputField: React.FC<InputFieldProps> = ({
   label,
   placeHolder,
@@ -16,17 +18,20 @@ const InputField: React.FC<InputFieldProps> = ({
   name,
   value,
   onChange,
+  mandatory,
+  // autoComplete,
 }) => {
   return (
     <div>
-     
-     <label className="label">{label}</label>
-     <input className="input-field"
+      <label className="label">{ label} {mandatory && <span className = "mandatory">*</span>}</label>
+      <input
+        className="input-field"
         type={type}
         name={name}
         placeholder={placeHolder}
         value={value}
         onChange={onChange}
+        // autoComplete={autoComplete}
       />
     </div>
   );
