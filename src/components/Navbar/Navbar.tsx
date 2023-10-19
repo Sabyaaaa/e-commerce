@@ -1,12 +1,25 @@
 import React, { useEffect } from "react";
 import "./Navbar.scss";
 import Button from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarProps {
   onGenderChange: (gender: string) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
+  // ************* Navigate to LOGIN *****************
+  const naviagte = useNavigate();
+
+  const logIn = () => {
+    naviagte("/login");
+  };
+
+  // ************* Navigate to CART *****************
+
+  const cart = () => {
+    naviagte("/cart");
+  };
   useEffect(() => {
     const canvas = document.querySelector("canvas");
 
@@ -91,8 +104,12 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
       </div>
       <div className="navbar-actions">
         <ul className="navbar-actions-list">
-          <Button label="Cart" className="card-btn" />
-          <Button label="Login/Register" className="card-btn card-btn-1" />
+          <Button label="Cart" className="card-btn" onClick={cart} />
+          <Button
+            label="Login/Register"
+            className="card-btn card-btn-1"
+            onClick={logIn}
+          />
         </ul>
       </div>
     </nav>
