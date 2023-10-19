@@ -144,7 +144,11 @@ const RegistrationPage: React.FC = () => {
         console.log(data);
         if (data) {
           toast.success("Registration successful!");
-          // naviagte("/login");
+          setTimeout(() => {
+            naviagte("/login");
+          },
+          3000);
+        
         }
       })
       .catch((error) => {

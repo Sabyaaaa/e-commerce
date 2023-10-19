@@ -267,6 +267,20 @@
         "country": ""
       },
       "id": 20
+    },
+    {
+      "name": "Alley",
+      "email": "ayushiagrawal8822@gmail.com",
+      "password": "awal8822@A",
+      "dob": "2023-10-17",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "zipCode": "",
+        "country": ""
+      },
+      "id": 21
     }
   ]
 }
