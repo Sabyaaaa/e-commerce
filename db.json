@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "userId": 1,
+      "userName": "Sagar",
+      "address": "Noida",
+      "mobileNo": 9953642989,
+      "email": "sasxssdcee",
+      "password": "dwd",
+      "dob": "12-20-2023"
+      
+    },
+    {
+      "userId": 2,
+      "userName": "ravi",
+      "address": "Noida",
+      "mobileNo": 9953642989,
+      "email": "ssaxsax",
+      "password": "dwd",
+      "dob": "12-20-2023"},
+      {
+        "userId": 3,
+        "userName": "satyam",
+        "address": "Noida",
+        "mobileNo": 9953642989,
+        "email": "ssaxsax",
+        "password": "dwd",
+        "dob": "12-20-2023"}
+      
+  ]
+  
+  
+    
+}
+  
