@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Price.css";
+import "./Price.scss";
 
 interface PriceProps {
   onPriceChange: (minPrice: number, maxPrice: number) => void;

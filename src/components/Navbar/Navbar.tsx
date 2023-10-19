@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Navbar.css";
+import "./Navbar.scss";
 import Button from "../Button/Button";
 
 interface NavbarProps {

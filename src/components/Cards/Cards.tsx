@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Cards.css";
+import "./Cards.scss";
 import Button from "../Button/Button";
 
 interface CardProps {
@@ -50,6 +50,8 @@ const Card: React.FC<CardProps> = ({
 
   const hideDescription = () => {
     setIsDescriptionVisible(false);
+    setIsPopupVisible(false);  // Close the size selection popup
+    setSelectedSize(null);  
   };
   // Reset the selected size when popup is closed
   const handlePopupClose = () => {
@@ -85,7 +87,7 @@ const Card: React.FC<CardProps> = ({
         {isDescriptionVisible && (
           <div className="description-popup">
             <div className="description-popup-content">
-              <span className="close" onClick={hideDescription}>
+              <span className="close1" onClick={hideDescription}>
                 &times;
               </span>
               <h2>{productName}</h2>

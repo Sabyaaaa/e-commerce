@@ -64,8 +64,12 @@ const ClothingPage: React.FC = () => {
   };
 
   const handleAddToCart = (productName: string, selectedSize: string) => {
-    // Implement logic to add the item to the cart based on the selected size
-    alert("Item added to cart:\nProduct Name: " + productName + "\nSize: " + selectedSize);
+    alert(
+      "Item added to cart:\nProduct Name: " +
+        productName +
+        "\nSize: " +
+        selectedSize
+    );
   };
   useEffect(() => {
     const filteredClothingItems = mockClothingItems.filter((item) => {

@@ -1,0 +1,43 @@
+$color_1: white;
+$color_2: #fff;
+$background-color_1: #39afe6;
+$background-color_2: #2136d0;
+$background-color_3: #3498db;
+$background-color_4: #f1f1f1;
+
+/* Navbar button styling */
+/* Styles for the size selection btn */
+.card-btn {
+	border-radius: 5px;
+	border-style: none;
+	background-color: $background-color_1;
+	color: $color_1;
+	margin-left: 15px;
+	height: 2.5rem;
+	z-index: 99999;
+	&:hover {
+		background-color: $background-color_2;
+	}
+}
+.btn {
+	&:hover {
+		background-color: $background-color_2;
+	}
+}
+.card-btn-1 {
+	width: 8rem;
+}
+.size-button {
+	padding: 10px 20px;
+	margin: 0 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	cursor: pointer;
+	&:hover {
+		background-color: $background-color_4;
+	}
+}
+.size-button.selected {
+	background-color: $background-color_3;
+	color: $color_2;
+}
