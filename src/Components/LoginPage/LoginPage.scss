@@ -7,18 +7,19 @@
 $background-color-body: white;
 $width-body: 100vw;
 $height-body: 100vh;
+// $font-family-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 $font-family-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
 $display-container: inline-block;
-$border-container: 2px solid #F8C8DC;
+$border-container: 6px double #F8C8DC;
 $margin-container: 5px;
 $padding-container: 30px;
 $padding-right-container: 70px;
 $background-color-container: white;
 // $background-color-container: rgba(174, 228, 232, 0.742);
-$transform-container: translate(85%, 15%);
+$transform-container: translate(80%, 15%);
 $border-radius-container: 10px;
-$box-shadow-container: 10px 10px 10px 10px rgba(202, 200, 200, 0.525);
+$box-shadow-container: 5px 5px 10px 5px rgba(202, 200, 200, 0.525);
 
 $text-align-h2: center;
 $margin-h2: 10px;
@@ -33,7 +34,8 @@ $font-size-p: smaller;
 $text-align-para: center;
 $margin-left-para: 50px;
 
-$color-tag: #27acff;
+// $color-tag: #27acff;
+$color-tag: #df2752;
 $cursor-tag: pointer;
 $text-decoration-tag: underline;
 
@@ -106,7 +108,7 @@ $margin-bottom-fields: 20px;
   // bottom: 50%;
   transform: $transform-container;
   border-radius: $border-radius-container;
-  box-shadow: $box-shadow-container;
+  // box-shadow: $box-shadow-container;
 }
 
 h2 {
