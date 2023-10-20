@@ -1,35 +1,36 @@
 {
   "users": [
     {
-      "userId": 1,
-      "userName": "Sagar",
-      "address": "Noida",
-      "mobileNo": 9953642989,
-      "email": "sasxssdcee",
-      "password": "dwd",
-      "dob": "12-20-2023"
-      
+      "name": "sagar",
+      "email": "ratiagr@gmail.com",
+      "password": "Ayushi@123",
+      "address": {
+        "street": "C-1/101,Lotus Pond Apartment,Indirapuram",
+        "city": "Ghaziabad",
+        "state": "UP",
+        "zipCode": "201014",
+        "country": "India"
+      },
+      "mobile":994324545,
+      "dob": "2023-10-18",
+      "id": 1
     },
     {
-      "userId": 2,
-      "userName": "ravi",
-      "address": "Noida",
-      "mobileNo": 9953642989,
-      "email": "ssaxsax",
-      "password": "dwd",
-      "dob": "12-20-2023"},
-      {
-        "userId": 3,
-        "userName": "satyam",
-        "address": "Noida",
-        "mobileNo": 9953642989,
-        "email": "ssaxsax",
-        "password": "dwd",
-        "dob": "12-20-2023"}
-      
+      "name": "satyam",
+      "email": "ratiagr@gmail.com",
+      "password": "Ayushi@123",
+      "address": {
+        "street": "Raipur",
+        "city": "Noida",
+        "state": "UP",
+        "zipCode": "201301",
+        "country": "India"
+      },
+      "mobile":994324545,
+      "dob": "2023-10-18",
+      "id": 2
+    }
   ]
-  
-  
-    
 }
   
+

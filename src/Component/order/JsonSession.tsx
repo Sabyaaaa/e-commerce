@@ -3,11 +3,18 @@ import Form from "./form";
 import "./UserCard.scss";
 
 interface User {
-  userId: number;
+  id: number;
   status: boolean;
-  userName: string;
-  address: string;
-  mobileNo: number;
+  name: string
+  address: {
+    street: string;
+      city: string;
+        state: string;
+        zipCode: string;
+        // country: string;
+
+  }
+  mobile: number;
 }
 
 interface Details {
@@ -38,7 +45,7 @@ const StoreDataInSessionStorage: React.FC = () => {
     if (storedUsers) {
       setDetails(JSON.parse(storedUsers));
     } else {
-      const defaultUsers: Details = { userId: 3, status: true };
+      const defaultUsers: Details = { userId: 1, status: true };
       sessionStorage.setItem("details", JSON.stringify(defaultUsers));
       setDetails(defaultUsers);
     }
@@ -79,7 +86,7 @@ const StoreDataInSessionStorage: React.FC = () => {
         const response = await fetch("http://localhost:3001/users");
         const data = await response.json();
         const filteredUsers = data.filter((user: User) => {
-          return user.userId === details?.userId;
+          return user.id === details?.userId;
         });
         setUsers(filteredUsers);
       } catch (error) {
@@ -92,41 +99,35 @@ const StoreDataInSessionStorage: React.FC = () => {
 
   return (
     <div className="user-details-container">
-      <div className="header">
-        <span style={{ fontWeight: "bold" }}> Order Summary </span>
-      <div className="secureContainer"> 
-      <img src="https://constant.myntassets.com/checkout/assets/img/sprite-secure.png" className="secureIcon" width="26" height="28" /> 
-      </div>
-      <div className="secure">100% SECURE</div>
-       </div>
+      <div className="header">Order Summary</div>
       <div className="details">
         {users.map((user) => (
-          <div className="user-card" key={user.userId}>
+          <div className="user-card" key={user.id}>
             <h2 className="delivery">Delivery Address</h2>
             <div className="user-details">
               <div className="radio-group">
                 <input
                   type="radio"
                   name="delivery-address"
-                  id={`user-${user.userId}`}
+                  id={`user-${user.id}`}
                 />
                 <label>Home</label>
                 <div className="userDetails">
-                  <p><span style={{ fontWeight: "bold" }}> Name : </span>{user.userName}</p>
-                  <p><span style={{ fontWeight: "bold" }}> Address : </span> {user.address}</p>
-                  <p><span style={{ fontWeight: "bold" }}> Mobile : </span>{user.mobileNo}</p>
+                  <p><span style={{ fontWeight: "bold" }}> Name : </span>{user.name}</p>
+                  <p><span style={{ fontWeight: "bold" }}> Address : </span> {user.address.street}, {user.address.city}, {user.address.state}-{user.address.zipCode}</p>
+                  <p><span style={{ fontWeight: "bold" }}> Mobile : </span>{user.mobile}</p>
                 </div>
               </div>
             </div>
             <div className="user-details">
-              <div className="radio-group">
+              {/* <div className="radio-group">
                 <input
                   type="radio"
                   name="delivery-address"
-                  id={`other-address-${user.userId}`}
-                />
-                <label>Alternate Address</label>
-              </div>
+                  id={`other-address-${user.id}`}
+                /> */}
+                {/* <label>Alternate Address</label> */}
+              {/* </div> */}
               <div className="formCall">
                 <Form />
               </div>

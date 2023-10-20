@@ -5,7 +5,8 @@ interface Address {
   name: string;
   // address: string;
   mobile: string; 
-  pinCode:string;
+  zipCode:string;
+  street:string;
   city:string;
   state:string;
 }
@@ -14,10 +15,11 @@ const Form: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
-  const [pinCode, setPin] = useState(''); 
+  const [zipCode, setZip] = useState(''); 
   const [city, setCity] = useState(''); 
   const [state, setState] = useState(''); 
   const [mobile, setMobile] = useState(''); 
+  const [street, setStreet] = useState(''); 
   const [submittedAddresses, setSubmittedAddresses] = useState<Address[]>([]);
 
   const handleButtonClick = () => {
@@ -31,9 +33,10 @@ const Form: React.FC = () => {
     const newAddress: Address = {
       name: name,
       mobile: mobile, 
-      pinCode:pinCode,
+      zipCode:zipCode,
       city:city,
-      state:state
+      state:state,
+      street:street
     };
 
     
@@ -43,9 +46,10 @@ const Form: React.FC = () => {
     setName('');
     // setAddress('');
     setMobile(''); 
-    setPin('')
+    setZip('')
     setCity('')
     setState('')
+    setStreet('')
     setIsOpen(false);
   };
 
@@ -53,11 +57,22 @@ const Form: React.FC = () => {
     <div className="detai">
       {submittedAddresses.map((address, index) => (
         <div key={index} className="submitted-address">
+          <div className="radio-group">
+                <input
+                  type="radio"
+                  name="delivery-address"
+                  
+                />
+                 <label>Alternate Address</label>
+                </div>
+                <div className="userDetails">
           <p><span style={{ fontWeight: "bold" }}> Name : </span> {address.name}</p>
-          <p><span style={{ fontWeight: "bold" }}> Pin Code : </span>{address.pinCode}</p>
+          
+          
+          <p><span style={{ fontWeight: "bold" }}> Address : </span>{address.street} , {address.city} , {address.state} , {address.zipCode}</p>
+         
           <p><span style={{ fontWeight: "bold" }}> Mobile : </span>{address.mobile}</p>
-          <p><span style={{ fontWeight: "bold" }}> City : </span>{address.city}</p>
-          <p><span style={{ fontWeight: "bold" }}> State : </span>{address.state}</p>
+        </div>
         </div>
       ))}
 
@@ -81,6 +96,7 @@ const Form: React.FC = () => {
             <input
               type="tel" 
               id="mobile"
+              pattern="[0-9]*"
               value={mobile}
               placeholder='Mobile'
               onChange={(e) => setMobile(e.target.value)}
@@ -88,16 +104,17 @@ const Form: React.FC = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="mobile">Address:</label>
+          <label htmlFor="adress">Adress Details</label>
             <input
               type="" 
-              id="pin"
-              value={pinCode}
-              placeholder='Pin Code'
-              onChange={(e) => setPin(e.target.value)}
+              id="street"
+              value={street}
+              placeholder='Street'
+              onChange={(e) => setStreet(e.target.value)}
               required
             />
-            </div>
+          </div>
+          
             <div className="form-group">
             <input
               type="" 
@@ -118,6 +135,19 @@ const Form: React.FC = () => {
               required
             />
           </div>
+            <div className="form-group">
+            <input
+              type="" 
+              id="zip"
+              pattern="[0-9]*"
+              value={zipCode}
+              placeholder='zipCode'
+              onChange={(e) => setZip(e.target.value)}
+              required
+            />
+          </div>
+          
+          
           <button className="add-address-btn" type="submit">Submit</button>
         </form>
       ) : (
@@ -130,3 +160,4 @@ const Form: React.FC = () => {
 };
 
 export default Form;
+

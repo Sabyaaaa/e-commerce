@@ -29,9 +29,11 @@ $shadow-color: rgba(0, 0, 0, 0.1);
 
 .radio-group {
   margin-top: 10px;
+  fill: #ff3f6c;
 
   input[type="radio"] {
     margin-right: 5px;
+    
   }
 
   input[type="radio"]:checked {
@@ -46,7 +48,7 @@ $shadow-color: rgba(0, 0, 0, 0.1);
 
 .product-line {
   border: none;
-  border-top: 1px dashed #000000;
+  border-top: 1px dashed #f4ecec;
   margin-top: 10px;
   display: flex;
   flex-direction: row;
@@ -112,7 +114,10 @@ $shadow-color: rgba(0, 0, 0, 0.1);
 .detai {
   .submitted-address {
     margin-bottom: 10px;
-    padding-left: 22px;
+    padding-left: 1px;
+    .radio-group{
+      padding-left: 1px;
+    }
   }
 
   form {
