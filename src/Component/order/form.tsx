@@ -69,7 +69,7 @@ const Form: React.FC = () => {
           <p><span style={{ fontWeight: "bold" }}> Name : </span> {address.name}</p>
           
           
-          <p><span style={{ fontWeight: "bold" }}> Address : </span>{address.street} , {address.city} , {address.state} , {address.zipCode}</p>
+          <p><span style={{ fontWeight: "bold" }}> Address : </span>{address.street} , {address.city} , {address.state}-{address.zipCode}</p> 
          
           <p><span style={{ fontWeight: "bold" }}> Mobile : </span>{address.mobile}</p>
         </div>
