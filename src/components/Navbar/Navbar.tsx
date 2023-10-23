@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Navbar.scss";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
+// import { AuthContext } from "../AuthProvider/AuthProvider";
+// import LogoutButton from "../Logout/Logout";
 
 interface NavbarProps {
   onGenderChange: (gender: string) => void;
@@ -11,9 +13,12 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
   // ************* Navigate to LOGIN *****************
   const naviagte = useNavigate();
 
-  const logIn = () => {
+  const logInfn = () => {
     naviagte("/login");
   };
+
+    // const {isLoggedIn, logIn, logOut} = useContext(AuthContext);
+
 
   // ************* Navigate to CART *****************
 
@@ -108,7 +113,7 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
           <Button
             label="Login/Register"
             className="cart-btn card-btn-1"
-            onClick={logIn}
+            onClick={logInfn}
           />
         </ul>
       </div>
