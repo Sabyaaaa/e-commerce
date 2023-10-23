@@ -1,17 +1,25 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 type PropsType = {
   viewCart: boolean;
   setViewCart: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Nav = ({ viewCart, setViewCart }: PropsType) => {
+  const navigate = useNavigate();
+  
   const button = viewCart ? (
     <button onClick={() => setViewCart(false)}>View Products</button>
   ) : (
-    <button onClick={() => 
+    <button onClick={() =>{ 
         setViewCart(true)
+        
+        navigate("/cart");
+    }
+
     } className="view_cart_div">
-      {/* View Cart */}
+      View Cart
       
      
       <svg
@@ -31,7 +39,7 @@ const Nav = ({ viewCart, setViewCart }: PropsType) => {
     
     </button>
   );
-
+ 
   const content = <nav className="nav">{button}</nav>;
 
   return content;

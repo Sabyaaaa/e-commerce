@@ -4,8 +4,10 @@ import Footer from './components/Footer';
 import Cart from './components/Cart';
 import ProductList from './components/ProductList';
 import { useState } from 'react';
+import {  Routes , Route} from 'react-router-dom';
 
 import './App.scss';
+
 
 function App(){
   const [viewCart, setViewCart] = useState<boolean>(false)
@@ -20,7 +22,25 @@ function App(){
     </>
   )
 
-  return content
+  return (
+    <>
+        {content}
+   
+
+     <Routes>
+      <Route path='/' element={<ProductList/>} />
+      <Route path='/cart' element={<Cart/>} />
+      
+      </Routes>
+    
+     
+      
+        
+  
+    
+    </>
+   
+    )
 }
 
 // const App:React.FC=()=> {
