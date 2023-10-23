@@ -38,11 +38,9 @@ const StoreDataInSessionStorage: React.FC = () => {
   const [total, setTotal] = useState<Total>();
   const deliveryCharges = 50;
   // const history = useNavigate();
-  if (!total) {
-    var totalAmount = deliveryCharges;
-  } else {
-    var totalAmount = deliveryCharges + total.amount;
-  }
+  
+    var totalAmount = deliveryCharges+(total?.amount || 0);
+   
 
   useEffect(() => {
     const storedUsers = sessionStorage.getItem("details");
