@@ -12,6 +12,7 @@ const RegistrationPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [mobile, setMobile] = useState("");
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [zipCode, setZipCode] = useState("");
@@ -39,6 +40,11 @@ const RegistrationPage: React.FC = () => {
   ) => {
     setConfirmPassword(e.target.value);
   };
+
+ 
+const handleMobileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setMobile(e.target.value);
+};
 
   const handleStreetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStreet(e.target.value);
@@ -93,7 +99,7 @@ const RegistrationPage: React.FC = () => {
   const handleSignUp = () => {
     setError("");
 
-    if (!name || !email || !password || !confirmPassword || !dob) {
+    if (!name || !email || !password || !confirmPassword || !mobile || !dob) {
       setError("Please fill all the mandatory fields.");
     } else {
       setError("");
@@ -118,10 +124,17 @@ const RegistrationPage: React.FC = () => {
       return;
     }
 
+    const isMobileValid = /^[0-9]{10}$/.test(mobile);
+    if (!isMobileValid) {
+      setError("Please enter a valid mobile number.");
+      return;
+    }
+
     const postData = {
       name: name,
       email: email,
       password: password,
+      mobile: mobile,
       dob: dob,
       address: {
         street: street,
@@ -204,6 +217,16 @@ const RegistrationPage: React.FC = () => {
         onChange={handleConfirmPasswordChange}
         mandatory={true}
       />
+
+<InputField
+  label="Mobile No."
+  type="text"
+  name="mobile"
+  placeHolder="Enter Your Mobile Number"
+  value={mobile}
+  onChange={handleMobileChange}
+  mandatory={true}
+/>
 
       <InputField
         label="DOB"
