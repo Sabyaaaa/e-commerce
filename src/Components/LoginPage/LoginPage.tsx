@@ -156,7 +156,7 @@ const LoginPage: React.FC = () => {
               console.log(userId);
               sessionStorage.setItem("userId", userId);
               // navigate('/')
-              navigate("/some");
+              navigate("/");
             } else {
               console.log("Invalid password. Please try again.");
 
@@ -182,7 +182,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="body">
+    <div className="login">
       <div className="container">
         <h2>Login Here!</h2>
         <div className="fields">
@@ -206,7 +206,7 @@ const LoginPage: React.FC = () => {
           onChange={handlePasswordChange}
         />
         </div>
-        <Button label="Login" onClick={handleLogin} />
+        <Button className="login-button" label="Login" onClick={handleLogin} />
         <div className="para">
         <p>Don't have an account?</p><p className="tag" onClick={handleRegistrationClick}>Register Here!</p>
         </div>

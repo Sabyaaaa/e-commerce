@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  // overflow: hidden;
 }
 
 // $background-color-body: #b7d1e2;
@@ -17,7 +18,7 @@ $padding-container: 30px;
 $padding-right-container: 70px;
 $background-color-container: white;
 // $background-color-container: rgba(174, 228, 232, 0.742);
-$transform-container: translate(80%, 15%);
+$transform-container: translate(55%,15%);
 $border-radius-container: 10px;
 $box-shadow-container: 5px 5px 10px 5px rgba(202, 200, 200, 0.525);
 
@@ -41,9 +42,9 @@ $text-decoration-tag: underline;
 
 $margin-input: 10px;
 $padding-input: 10px;
-$width-input: 100%;
+$width-input: 90%;
 $height-input: auto;
-$margin-bottom-input: 15px;
+$margin-bottom-input: 10px;
 $border-input: none;
 $background-color-input: #efe5eed6;
 $border-radius-input: 6px;
@@ -54,31 +55,12 @@ $padding-left-label: 10px;
 $font-size-label: large;
 $font-weight-label: 500;
 
-$width-button: 40%;
-$margin-button: 5px;
-$padding-button: 8px;
-$margin-left-button: 20px;
-$margin-top-button: 20px;
-$margin-bottom-button: 15px;
-$font-family--button: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-// $background-color-button: #27acff;
-$background-color-button: #ff3f6c;
-$border-button: none;
-$border-radius-button: 8px;
-$font-weight-button: bold;
-$font-size-button: medium;
-$cursor-button: pointer;
-// $color-button: rgba(255, 253, 253, 0.922);
-$color-button: white;
-$display-button: block;
-$transform-button: translateX(80%);
-// $background-color-button-hover: rgba(2, 82, 174, 0.879);
-$background-color-button-hover: #df2752;
+
 
 $margin-left-fields: 15px;
 $margin-bottom-fields: 20px;
 
-.body {
+.login {
   // background-color: rgba(236, 236, 224, 0.66);
   // background-color: #F5E8B7;
   background-color: $background-color-body;
@@ -87,17 +69,21 @@ $margin-bottom-fields: 20px;
   // font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-family: $font-family-body;
   // display: block;
+  overflow: hidden;
 }
 
 .container {
   border: $border-container;
   // text-align: left;
   display: $display-container;
+  // display: flex;
   margin: $margin-container;
+  // overflow: hidden;
   padding: $padding-container;
-  // width: 50%;
-  // height: 50%;
-  padding-right: $padding-right-container;
+  width: 50%;
+  height: 75%;
+  // margin-top: -2px;
+  // padding-right: $padding-right-container;
   // background-color: rgba(207, 233, 223, 0.525);
   background-color: $background-color-container;
   // background-color: #C1D8C3;
@@ -113,7 +99,7 @@ $margin-bottom-fields: 20px;
 
 h2 {
   text-align: $text-align-h2;
-  margin: $margin-h2;
+  // margin: $margin-h2;
   padding: $padding-h2;
   padding-left: $padding-left-h2;
   color: $color-h2;
@@ -145,8 +131,8 @@ p {
   padding: $padding-input;
   width: $width-input;
   height: $height-input;
-  margin-bottom: $margin-bottom-input;
-  // margin-right: 60px;
+  // margin-bottom: $margin-bottom-input;
+  margin-left: 30px;
   border: $border-input;
   background-color: $background-color-input;
   border-radius: $border-radius-input;
@@ -156,38 +142,13 @@ p {
 .label {
   text-align: $text-align-label;
   margin: $margin-label;
-  // margin-left: 10px;
+  margin-left: 25px;
   padding-left: $padding-left-label;
   font-size: $font-size-label;
   font-weight: $font-weight-label;
 }
 
-.button {
-  width: $width-button;
-  margin: $margin-button;
-  padding: $padding-button;
-  margin-left: $margin-left-button;
-  margin-top: $margin-top-button;
-  margin-bottom: $margin-bottom-button;
-  // font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-family: $font-family--button;
-  // background-color: rgb(127, 189, 244);
-  background-color: $background-color-button;
-  border: $border-button;
-  border-radius: $border-radius-button;
-  font-weight: $font-weight-button;
-  font-size: $font-size-button;
-  cursor: $cursor-button;
-  // color: #193c2d;
-  color: $color-button;
-  display: $display-button;
-  transform: $transform-button;
-  // justify-content: center;
-  // align-items: center;
-  &:hover {
-    background-color: $background-color-button-hover;
-  }
-}
+
 
 .fields p {
   // border: 1px solid black;
