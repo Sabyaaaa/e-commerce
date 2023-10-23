@@ -9,13 +9,13 @@ import data from "../../src/data/products.json";
 export type CartItemType = {
   id: number;
   product_name: string;
-  sizes: string[];
+  sizes: string;
   image_url: string;
   price: number;
-  // quantity?: any;
-  quantity?: {
-    [key: string]: number
-  };
+  // quantity: {
+  //   [key: string]: number
+  // }
+  quantity?: any;
   // quantity: {
   //   small: number;
   //   medium: number;
@@ -40,7 +40,7 @@ export type ReducerActionType = typeof REDUCER_ACTION_TYPE;
 export type ReducerAction = {
   type: string;
   payload?: CartItemType;
-  sizes?: string;
+  
 };
 
 // type HandleAddToCart = (product: CartItemType) => Promise<void>;
@@ -51,14 +51,13 @@ const reducer = (
 ): CartStateType => {
   switch (action.type) {
     case REDUCER_ACTION_TYPE.ADD: {
-      if (!action.payload || !action.sizes) {
+      if (!action.payload) {
         throw new Error("action.payload missing in ADD action");
       }
       const { id, product_name, image_url, price, sizes, quantity } = action.payload;
 
-      // const sizereceived = action.sizes
-      
-      // console.log("sizerec con", typeof sizereceived)
+      const sizereceived = sizes
+      console.log("size che", sizereceived)
    
       // const filteredCart: CartItemType[]= state.cart.filter(item => item.id !== id)
 
@@ -70,13 +69,7 @@ const reducer = (
         throw new Error("Product not found");
       }
 
-      const availableQuantity:{[key: string]: number} = {};
-      sizes.forEach((size)=>{
-        if(product.quantity && product.quantity[size]){
-          availableQuantities[size] = product.quantity[size];
-        }
-      })
-      
+      const availableQuantity = product.quantity[sizereceived as "small" | "medium" | "large"]
 
      console.log("checking quantity", availableQuantity)
 
@@ -131,7 +124,10 @@ const reducer = (
         throw new Error("action.payload missing in QUANTITY action");
       }
 
-      const { id, quantity } = action.payload;
+      const { id, quantity, sizes } = action.payload;
+
+      const sizeInCart = sizes;
+      console.log("cart size", sizeInCart)
 
       const itemExists: CartItemType | undefined = state.cart.find(
         (item) => item.id === id
@@ -142,6 +138,8 @@ const reducer = (
       }
 
       const updatedItem: CartItemType = { ...itemExists, quantity };
+
+     
 
       const filteredCart: CartItemType[] = state.cart.filter(
         (item) => item.id !== id
@@ -199,7 +197,7 @@ const useCartContext = (initCartState: CartStateType) => {
     const itemB = Number(b.id);
     return itemA - itemB;
   });
-  sessionStorage.setItem("cart1", JSON.stringify(cart));
+  sessionStorage.setItem("cart", JSON.stringify(cart));
   console.log("why empty" + JSON.stringify(cart));
   console.log("cart conoso"+ cart);
 

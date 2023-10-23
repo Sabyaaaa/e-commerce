@@ -18,20 +18,36 @@ const Product = ({product, dispatch, REDUCER_ACTIONS, inCart}:PropsType): ReactE
     const handleSelectChange = (event: any) => {
         console.log(event.target.value)
         setSizes(event.target.value)
+        // dispatch({
+        //     type: REDUCER_ACTIONS.QUANTITY,
+    
+        //     payload: { ...product, sizes: String(event.target.value) },
+        //   });
     }
 
     const img: string[] = data.products.map((product: {image_url: string}) => product.image_url);
    
 
     const onAddtoCart = () => {
-        if(sizes.length === 0){
+
+
+        if(sizes.length > 0){
+            const selectedSize = sizes;
+            return dispatch({type: REDUCER_ACTIONS.ADD, payload : { ...product,  sizes: selectedSize, quantity:1}})
+        }else{
             // alert('Please select a size')
             setError('Please select a size')
             return;
-            
         }
-        setError('')
-      return dispatch({type: REDUCER_ACTIONS.ADD, payload : { ...product}, sizes})
+        
+    //     if(sizes.length === 0){
+    //         // alert('Please select a size')
+    //         setError('Please select a size')
+    //         return;
+            
+    //     }
+    //     setError('')
+    //   return dispatch({type: REDUCER_ACTIONS.ADD, payload : { ...product}, sizes})
         // dispatch({type: REDUCER_ACTIONS.ADD, payload : { ...product, quantity: 1}})
     }
 

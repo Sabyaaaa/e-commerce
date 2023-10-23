@@ -12,13 +12,24 @@ type PropsType = {
 const CartLineItem = ({ item, dispatch, REDUCER_ACTIONS }: PropsType) => {
   const [errorMessage, setErrorMessage] = useState<string>("");
 
+  const size = item.sizes;
+  
+
   const productInData = data.products.find((product) => product.id === item.id);
+
+  if (!productInData) {
+    throw new Error("Product not found");
+  }
+
+  const availableQuantity = productInData.quantity[size as "small" | "medium" | "large"]
+
+ console.log("checking quantity", availableQuantity)
 
   // const img: string[] = data.products.map((item: {image: string}) => item.image);
 
   const LineTotal: number = item.quantity * item.price;
 
-  const highestQty: number = 20 > item.quantity ? 20 : item.quantity;
+  const highestQty: number = 20 > availableQuantity ? availableQuantity : 20;
 
   const optionValues: number[] = [...Array(highestQty).keys()].map(
     (i) => i + 1
@@ -63,6 +74,10 @@ const CartLineItem = ({ item, dispatch, REDUCER_ACTIONS }: PropsType) => {
           style: "currency",
           currency: "INR",
         }).format(item.price)}
+      </div>
+
+      <div>
+        {size}
       </div>
 
       <label htmlFor="itemQty" className="offscreen">
