@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Form from "./form";
 import "./UserCard.scss";
+// import { useNavigate } from "react-router-dom";
 
 interface User {
   id: number;
   status: boolean;
-  name: string
+  name: string;
   address: {
     street: string;
-      city: string;
-        state: string;
-        zipCode: string;
-        // country: string;
-
-  }
+    city: string;
+    state: string;
+    zipCode: string;
+    // country: string;
+  };
   mobile: number;
 }
 
@@ -36,6 +36,13 @@ const StoreDataInSessionStorage: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [details, setDetails] = useState<Details>();
   const [total, setTotal] = useState<Total>();
+  const deliveryCharges = 50;
+  // const history = useNavigate();
+  if (!total) {
+    var totalAmount = deliveryCharges;
+  } else {
+    var totalAmount = deliveryCharges + total.amount;
+  }
 
   useEffect(() => {
     const storedUsers = sessionStorage.getItem("details");
@@ -51,9 +58,8 @@ const StoreDataInSessionStorage: React.FC = () => {
     }
     if (storedTotals) {
       setTotal(JSON.parse(storedTotals));
-    } 
-    else {
-      const defaultTotal: Total = { amount: 45 };
+    } else {
+      const defaultTotal: Total = { amount: 1145 };
       sessionStorage.setItem("total", JSON.stringify(defaultTotal));
       setTotal(defaultTotal);
     }
@@ -113,21 +119,23 @@ const StoreDataInSessionStorage: React.FC = () => {
                 />
                 <label>Home</label>
                 <div className="userDetails">
-                  <p><span style={{ fontWeight: "bold" }}> Name : </span>{user.name}</p>
-                  <p><span style={{ fontWeight: "bold" }}> Address : </span> {user.address.street}, {user.address.city}, {user.address.state}-{user.address.zipCode}</p>
-                  <p><span style={{ fontWeight: "bold" }}> Mobile : </span>{user.mobile}</p>
+                  <p>
+                    <span style={{ fontWeight: "bold" }}> Name : </span>
+                    {user.name}
+                  </p>
+                  <p>
+                    <span style={{ fontWeight: "bold" }}> Address : </span>{" "}
+                    {user.address.street} , {user.address.city} ,{" "}
+                    {user.address.state}-{user.address.zipCode}
+                  </p>
+                  <p>
+                    <span style={{ fontWeight: "bold" }}> Mobile : </span>
+                    {user.mobile}
+                  </p>
                 </div>
               </div>
             </div>
             <div className="user-details">
-              {/* <div className="radio-group">
-                <input
-                  type="radio"
-                  name="delivery-address"
-                  id={`other-address-${user.id}`}
-                /> */}
-                {/* <label>Alternate Address</label> */}
-              {/* </div> */}
               <div className="formCall">
                 <Form />
               </div>
@@ -150,16 +158,35 @@ const StoreDataInSessionStorage: React.FC = () => {
               ))}
               <hr className="product-line" />
               <div className="product-prices">
-                <h2>Payable Amount</h2>
-               
+                <h2>Price Details</h2>
                 <div>
                   <p>
-                    <span style={{ fontWeight: "bold" }}> Total : ₹  </span>
-                    {total?.amount}
+                    <span> Total MRP : ₹ {total?.amount} </span>
+                  </p>
+                  <p>
+                    <span> Delivery Charges : ₹ {deliveryCharges} </span>
                   </p>
                 </div>
               </div>
-              <button type="submit" className="placeOrder">
+              <hr className="product-line" />
+              <div className="product-prices">
+                <div>
+                  <p>
+                    <span style={{ fontWeight: "bold" }}>
+                      {" "}
+                      Payable Amount : ₹{totalAmount}
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <button
+                type="submit"
+                className="placeOrder"
+                onClick={() => {
+                  alert("Thank you for your payment");
+                  // history("/");
+                }}
+              >
                 UPI PAY
               </button>
             </div>
