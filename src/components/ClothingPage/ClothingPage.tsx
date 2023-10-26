@@ -10,6 +10,7 @@ import CartContext, { CartProvider, UseCartContextType } from "../../context/Car
 import {  ReducerAction } from '../../context/CartProvider';
 import { ReducerActionType } from "../../context/CartProvider";
 import useCart from '../../hooks/useCart';
+import { json } from "body-parser";
 
 // type PropsType = {
 //   product: 
@@ -159,12 +160,17 @@ const ClothingPage: React.FC = () => {
     });
 
     setFilteredItems(filteredClothingItems);
+
+    // sessionStorage.setItem("cart1", JSON.stringify(cart));
+
+   
   }, [
     selectedSizes,
     selectedColors,
     selectedCategories,
     selectedPrice,
     selectedGender,
+    cart
   ]);
 
   return (

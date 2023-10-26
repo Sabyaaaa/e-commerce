@@ -14,6 +14,10 @@ const Cart = () => {
     setConfirm(true)
   }
 
+  sessionStorage.setItem("Total Item", JSON.stringify(totalItems));
+  sessionStorage.setItem("Total Price", JSON.stringify(totalPrice));
+  sessionStorage.setItem("Cart", JSON.stringify(cart));
+
   const pageContent = confirm?
     <h2>Thankyou for your order</h2>
     :<>
@@ -32,6 +36,7 @@ const Cart = () => {
       </ul>
       <div className="cart__totals">
         <p>Total Items: {totalItems}</p>
+        
         <p>Total Price: {totalPrice}</p>
         <button className="cart__submit" disabled={!totalItems}
         onClick={onSubmitOrder}>

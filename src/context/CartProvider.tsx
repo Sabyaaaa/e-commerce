@@ -32,7 +32,6 @@ const REDUCER_ACTION_TYPE = {
   ADD: "ADD",
   REMOVE: "REMOVE",
   QUANTITY: "QUANTITY",
-  SIZES: "SIZES",
   SUBMIT: "SUBMIT",
 };
 
@@ -87,7 +86,7 @@ const reducer = (
 
       if (newTotalQuantity <= availableQuantity) {
         const filteredCart = state.cart.filter((item) => item.id !== id);
-
+        
         return {
           ...state,
           cart: [...filteredCart, { id, product_name, image_url, sizes, price, quantity }],
@@ -95,10 +94,7 @@ const reducer = (
           
         };
 
-    
 
-        
-        
       } else {
         console.warn("Product quantity not available.");
        
@@ -147,7 +143,8 @@ const reducer = (
       const filteredCart: CartItemType[] = state.cart.filter(
         (item) => item.id !== id
       );
-
+      
+      
       return { ...state, cart: [...filteredCart, updatedItem] };
     }
     case REDUCER_ACTION_TYPE.SUBMIT: {
@@ -192,15 +189,15 @@ const useCartContext = (initCartState: CartStateType) => {
     }, 0)
   );
   
-  sessionStorage.setItem("item", JSON.stringify(totalItems));
-  sessionStorage.setItem("price", JSON.stringify(totalPrice));
+  // sessionStorage.setItem("item", JSON.stringify(totalItems));
+  // sessionStorage.setItem("price", JSON.stringify(totalPrice));
 
   const cart = state.cart.sort((a, b) => {
     const itemA = Number(a.id);
     const itemB = Number(b.id);
     return itemA - itemB;
   });
-  sessionStorage.setItem("cart", JSON.stringify(cart));
+  // sessionStorage.setItem("cart", JSON.stringify(cart));
   
 
   return { dispatch, REDUCER_ACTIONS, totalItems, totalPrice, cart };
