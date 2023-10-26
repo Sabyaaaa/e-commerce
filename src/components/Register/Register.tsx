@@ -3,7 +3,7 @@ import InputField from "./InputField";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Button from "./Button";
+import Button from "../Button/Button";
 import "./Register.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -145,7 +145,7 @@ const handleMobileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       },
     };
 
-    fetch("http://localhost:3000/users", {
+    fetch("http://localhost:3001/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -172,6 +172,7 @@ const handleMobileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   };
 
   return (
+    <div className="register-container">
     <div className="form-container">
       <h1 className="register">Register Here!</h1>
       <h3 className="personal-info">Personal Information</h3>
@@ -302,7 +303,7 @@ const handleMobileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         </select>
       </div>
 
-      <Button label="Register" onClick={handleSignUp} />
+      <Button className="register-btn" label="Register" onClick ={handleSignUp} />
       <div className="p">
         <p>Already have an account?</p>
         <p className="loginClick" onClick={handleLogin}>
@@ -310,6 +311,7 @@ const handleMobileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         </p>
       </div>
       <ToastContainer />
+    </div>
     </div>
   );
 };
