@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "name": "Alley",
+      "email": "ayushiagrawal8822@gmail.com",
+      "password": "agrawal8822@A",
+      "mobile": "1243567899",
+      "dob": "2023-10-24",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "zipCode": "",
+        "country": ""
+      },
+      "id": 1
+    },
+    {
+      "name": "abc",
+      "email": "abc@gmail.com",
+      "password": "abc123@A",
+      "mobile": "1243567899",
+      "dob": "2023-10-24",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "zipCode": "",
+        "country": ""
+      },
+      "id": 2
+    },
+    {
+      "name": "Ayushi",
+      "email": "ayushiagrawallll8822@gmail.com",
+      "password": "agrawal8822@A",
+      "mobile": "1234567891",
+      "dob": "2023-10-03",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "zipCode": "",
+        "country": ""
+      },
+      "id": 3
+    }
+  ]
+}
