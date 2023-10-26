@@ -1,7 +1,8 @@
 import React, { ReactElement, useState } from 'react'
 import { ProductType } from '../context/ProductsProvider'
 import { ReducerActionType, ReducerAction } from '../context/CartProvider';
-import data from '../../../e-commerce/src/data/products.json'
+import data from '../data/db.json'
+import Filters from './Filters/Filters';
 
 type PropsType = {
     product: ProductType,
@@ -55,6 +56,7 @@ const Product = ({product, dispatch, REDUCER_ACTIONS, inCart}:PropsType): ReactE
 
     const content = 
         <article className="product">
+          
             <h3>{product.product_name}</h3>
             <img src={product.image_url} alt={product.product_name} className='product_image'/>
             {/* {img.map((image, index) => 

@@ -1,0 +1,116 @@
+$color_1: white;
+$background-color_1: #ff3f6c;
+$background-color_2: #df2752;
+$background-color_3: #ff3f6c;
+$background-color_4: #f1f1f1;
+
+
+$width-button: 40%;
+$margin-button: 5px;
+$padding-button: 8px;
+$margin-left-button: 20px;
+$margin-top-button: 20px;
+$margin-bottom-button: 15px;
+$font-family--button: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+// $background-color-button: #27acff;
+$background-color-button: #ff3f6c;
+$border-button: none;
+$border-radius-button: 8px;
+$font-weight-button: bold;
+$font-size-button: medium;
+$cursor-button: pointer;
+// $color-button: rgba(255, 253, 253, 0.922);
+$color-button: white;
+$display-button: block;
+$transform-button: translateX(75%);
+// $background-color-button-hover: rgba(2, 82, 174, 0.879);
+$background-color-button-hover: #df2752;
+
+/* Navbar button styling */
+/* Styles for the size selection btn */
+.cart-btn {
+    border-radius: 5px;
+    border-style: none;
+    background-color: $background-color_1;
+    color: $color_1;
+    margin-left: 15px;
+    width: 8rem;
+    height: 2.5rem;
+    z-index: 99999;
+
+    &:hover {
+        background-color: $background-color_2;
+    }
+}
+
+.btn {
+    background-color: $background-color_1;
+    color: $color_1;
+
+    &:hover {
+        background-color: $background-color_2;
+    }
+}
+
+.card-btn-1 {
+    width: 8rem;
+}
+
+.size-button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $background-color_4;
+    }
+}
+
+.size-button.selected {
+    background-color: $background-color_3;
+    color: $color_1;
+}
+
+.btn-1,
+.btn-2 {
+    background-color: #ff3f6c;
+    color: $color_1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 35px;
+    width: 110px;
+
+    &:hover {
+        background-color: $background-color_2;
+    }
+}
+
+
+.login-button {
+    width: $width-button;
+    margin: $margin-button;
+    padding: $padding-button;
+    margin-left: $margin-left-button;
+    margin-top: $margin-top-button;
+    margin-bottom: $margin-bottom-button;
+    // font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: $font-family--button;
+    // background-color: rgb(127, 189, 244);
+    background-color: $background-color-button;
+    border: $border-button;
+    border-radius: $border-radius-button;
+    font-weight: $font-weight-button;
+    font-size: $font-size-button;
+    cursor: $cursor-button;
+    // color: #193c2d;
+    color: $color-button;
+    display: $display-button;
+    transform: $transform-button;
+    // justify-content: center;
+    // align-items: center;
+    &:hover {
+      background-color: $background-color-button-hover;
+    }
+  }

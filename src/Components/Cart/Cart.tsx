@@ -1,8 +1,9 @@
 import React from 'react'
-import useCart from '../hooks/useCart'
+import useCart from '../../hooks/useCart'
 import { useState } from 'react'
 import CartLineItem from './CartLineItem'
-
+import Navbar from '../Navbar/Navbar'
+import "./cart.css"
 const Cart = () => {
  
   const[confirm, setConfirm] = useState<boolean>(false)
@@ -42,6 +43,7 @@ const Cart = () => {
 
   const content = (
     <main className="main main--cart">
+      <Navbar onGenderChange={onGenderChange}/>
       {pageContent}
     </main>
   )
@@ -49,3 +51,7 @@ const Cart = () => {
 }
 
 export default Cart
+
+function onGenderChange(gender: string): void {
+  throw new Error('Function not implemented.')
+}

@@ -1,18 +1,20 @@
 import React from "react";
 import Nav from "./Nav";
 import useCart from "../hooks/useCart";
+import Navbar from "./Navbar/Navbar";
 
 type PropsType = {
+  onGenderChange?: (gender: string) => void;
   viewCart: boolean;
   setViewCart: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Header = ({ viewCart, setViewCart }: PropsType) => {
+const Header = ({  viewCart, setViewCart }: PropsType) => {
 //   const { totalItems, totalPrice } = useCart();
 
   const content = (
     <header className="header">
-      <div className="custom-shape-divider-top-1697528677">
+      {/* <div className="custom-shape-divider-top-1697528677">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -34,14 +36,15 @@ const Header = ({ viewCart, setViewCart }: PropsType) => {
             className="shape-fill"
           ></path>
         </svg>
-      </div>
+      </div> */}
       <div className="header_title-bar">
-        <h1 style={{color: '#303068'}}>ShopMore</h1>
+        {/* <h1 style={{color: '#303068'}}>ShopMore</h1> */}
         {/* <div className="header_price-box">
           <p>Total Items: {totalItems}</p>
           <p>Total Price: {totalPrice}</p>
         </div> */}
       </div>
+      
       <Nav viewCart={viewCart} setViewCart={setViewCart} />
     </header>
   );

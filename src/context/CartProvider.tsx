@@ -4,7 +4,8 @@ import {
   createContext,
   ReactElement,
 } from "react";
-import data from "../../src/data/products.json";
+import data from "../../src/data/db.json"
+
 
 export type CartItemType = {
   id: number;
@@ -94,6 +95,8 @@ const reducer = (
           
         };
 
+    
+
         
         
       } else {
@@ -157,7 +160,7 @@ const reducer = (
 
 const useCartContext = (initCartState: CartStateType) => {
   const [state, dispatch] = useReducer(reducer, initCartState);
-
+  
  
   // const storedCart = sessionStorage.getItem('cart');
   // const initialCart = storedCart ? JSON.parse(storedCart): initCartState
@@ -198,8 +201,7 @@ const useCartContext = (initCartState: CartStateType) => {
     return itemA - itemB;
   });
   sessionStorage.setItem("cart", JSON.stringify(cart));
-  console.log("why empty" + JSON.stringify(cart));
-  console.log("cart conoso"+ cart);
+  
 
   return { dispatch, REDUCER_ACTIONS, totalItems, totalPrice, cart };
 };

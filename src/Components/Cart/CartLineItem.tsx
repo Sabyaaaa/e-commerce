@@ -1,8 +1,9 @@
 import React, { ChangeEvent, ReactElement, useState } from "react";
-import { CartItemType } from "../context/CartProvider";
-import { ReducerAction } from "../context/CartProvider";
-import { ReducerActionType } from "../context/CartProvider";
-import data from "../../../e-commerce/src/data/products.json";
+import { CartItemType } from "../../context/CartProvider";
+import { ReducerAction } from "../../context/CartProvider";
+import { ReducerActionType } from "../../context/CartProvider";
+import data from "../../data/db.json"
+import "./cart.css"
 
 type PropsType = {
   item: CartItemType;
@@ -68,19 +69,19 @@ const CartLineItem = ({ item, dispatch, REDUCER_ACTIONS }: PropsType) => {
   const content = (
     <li className="cart__item">
       <img src={item.image_url} alt={item.product_name} className="cart__img" />
-      <div aria-label="Item Name">{item.product_name}</div>
-      <div aria-label="Price Per Item">
+      <div aria-label="Item Name" className="font-styling__cart">{item.product_name}</div>
+      <div aria-label="Price Per Item" className="font-styling__cart">
         {new Intl.NumberFormat("en-IN", {
           style: "currency",
           currency: "INR",
         }).format(item.price)}
       </div>
 
-      <div>
+      <div className="font-styling__cart">
         {size}
       </div>
 
-      <label htmlFor="itemQty" className="offscreen">
+      <label htmlFor="itemQty" className="offscreen font-styling__cart">
         Item Quantity
       </label>
       <select
