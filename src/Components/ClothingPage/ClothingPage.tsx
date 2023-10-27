@@ -6,7 +6,7 @@ import Filters from "../Filters/Filters";
 import mockClothingItems from "../../MOCK_DATA.json";
 import Navbar from "../Navbar/Navbar";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
-import CartContext, { CartProvider, UseCartContextType } from "../../context/CartProvider";
+import  { CartProvider,CartContext, UseCartContextType } from "../../context/CartProvider";
 import {  ReducerAction } from '../../context/CartProvider';
 import { ReducerActionType } from "../../context/CartProvider";
 import useCart from '../../hooks/useCart';

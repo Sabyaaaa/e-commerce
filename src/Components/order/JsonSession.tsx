@@ -26,6 +26,7 @@ interface Details {
 interface Order {
   product_name: string;
   image_url: string;
+  sizes:string;
   price: number;
 }
 interface Total {
@@ -143,6 +144,8 @@ const StoreDataInSessionStorage: React.FC = () => {
                     <img src={order.image_url} alt="Product" className="image" />
 
                     <p className="order-p"> {order.product_name}</p>
+                    <p className="order-p"> <span style={{ fontWeight: "bold" , color:"#ff3f6c" }}>  
+                    ({order.sizes})</span></p>
                   </div>
                 </div>
               ))}
