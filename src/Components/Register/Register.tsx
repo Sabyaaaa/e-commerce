@@ -29,7 +29,6 @@ const RegistrationPage: React.FC = () => {
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
- 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
@@ -63,9 +62,10 @@ const RegistrationPage: React.FC = () => {
   const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputZipCode = e.target.value;
  
-    const zipCodePattern = /^\d+$/;
-    setZipCode(inputZipCode);
-    if (!zipCodePattern.test(inputZipCode)) {
+    if (/^\d+$/.test(inputZipCode)) {
+      setZipCode(inputZipCode);
+    }
+    else{
       toast("Please enter a numeric value for the zip code.");
     }
   };
@@ -101,6 +101,12 @@ const RegistrationPage: React.FC = () => {
       return;
     }
  
+    const isNameValid = /^[a-zA-Z\s'-]+$/.test(name);
+    if (!isNameValid) {
+      toast("Name should only contain letters and spaces.");
+      return;
+    }
+ 
     const isEmailValid = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.test(email);
     if (!isEmailValid) {
       toast("Please enter a valid email address.");
@@ -126,20 +132,28 @@ const RegistrationPage: React.FC = () => {
       return;
     }
  
-    const postData = {
-      name: name,
-      email: email,
-      password: password,
-      mobile: mobile,
-      dob: dob,
-      address: {
-        street: street,
-        city: city,
-        state: selectedState,
-        zipCode: zipCode,
-        country: selectedCountry,
-      },
-    };
+   
+ 
+    fetch(`http://localhost:3001/users?email=${email}`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length > 0) {
+        toast("Email already exists. Please use a different email.");
+      } else {
+        const postData = {
+          name: name,
+          email: email,
+          password: password,
+          mobile: mobile,
+          dob: dob,
+          address: {
+            street: street,
+            city: city,
+            state: selectedState,
+            zipCode: zipCode,
+            country: selectedCountry,
+          },
+        };
  
     fetch("http://localhost:3001/users", {
       method: "POST",
@@ -161,7 +175,12 @@ const RegistrationPage: React.FC = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
-  };
+  }
+})
+.catch((error) => {
+  console.error("Error:", error);
+});
+};
  
   return (
     <div className="register-container">
@@ -197,7 +216,6 @@ const RegistrationPage: React.FC = () => {
           value={password}
           onChange={handlePasswordChange}
           mandatory={true}
-          // error={passwordError}
         />
  
         <InputField

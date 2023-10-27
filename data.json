@@ -104,6 +104,21 @@
         "country": "India"
       },
       "id": 7
+    },
+    {
+      "name": "shyam",
+      "email": "ayushi@gmail.com",
+      "password": "Asdf@123",
+      "mobile": "0513671749",
+      "dob": "2023-10-24",
+      "address": {
+        "street": "C-1/101",
+        "city": "Lotus Pond Apartment,Indirapuram",
+        "state": "",
+        "zipCode": "",
+        "country": "India"
+      },
+      "id": 8
     }
   ]
 }
