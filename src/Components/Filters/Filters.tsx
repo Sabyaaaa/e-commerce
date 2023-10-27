@@ -38,3 +38,4 @@ const Filters: React.FC<FiltersProps> = ({
 };
 
 export default Filters;
+
