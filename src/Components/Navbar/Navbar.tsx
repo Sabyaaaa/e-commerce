@@ -7,7 +7,7 @@ import Nav from "../Nav";
 import Cart from "../Cart/Cart";
 import ProductList from "../ProductList";
 
-// import { AuthContext } from "../AuthProvider/AuthProvider";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 // import LogoutButton from "../Logout/Logout";
 
 interface NavbarProps {
@@ -21,9 +21,15 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
   const navigate = useNavigate();
 
   const location = useLocation()
+  const {isLoggedIn,logOut}=useContext(AuthContext);
 
   const logInfn = () => {
     navigate("/login");
+  };
+  const logOutFn = () => {
+    logOut();
+ 
+    // Perform any additional logout logic here
   };
 
     // const {isLoggedIn, logIn, logOut} = useContext(AuthContext);
@@ -142,14 +148,44 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
             <Button label="Cart" className="cart-btn" onClick={cart} />
           )}
            {!isClothingPage && !isOrderPage &&(
-            <Button label="View Products" className="cart-btn" onClick={viewProducts} />
+            <Button label="View Products" className="view-button1" onClick={viewProducts} />
           )}
-          
-          <Button
+          {!isCartPage &&(
+            <div>
+              {isLoggedIn ? (
+        <Button
+          label="Logout"
+          className="cart-btn card-btn-1"
+          onClick={logOutFn}
+        />
+      ) : (
+        <Button
+        label="Login/Register"
+        className="cart-btn card-btn-1"
+        onClick={logInfn}
+        />
+      )}
+            </div>
+
+          )}
+          {isLoggedIn ? (
+        <Button
+          label="Logout"
+          className="cart-btn card-btn-1"
+          onClick={logOutFn}
+        />
+      ) : (
+        <Button
+        label="Login/Register"
+        className="cart-btn card-btn-1"
+        onClick={logInfn}
+        />
+      )}
+          {/* <Button
             label="Login/Register"
             className="cart-btn card-btn-1"
             onClick={logInfn}
-          />
+          /> */}
            
         </ul>
       </div>

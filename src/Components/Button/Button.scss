@@ -33,7 +33,24 @@ $background-color-button-hover: #df2752;
     border-style: none;
     background-color: $background-color_1;
     color: $color_1;
-    margin-left: 15px;
+    // margin-left: 15px;
+    margin-left: -80px;
+    width: 8rem;
+    height: 2.5rem;
+    z-index: 99999;
+
+    &:hover {
+        background-color: $background-color_2;
+    }
+}
+.view-button1 {
+    border-radius: 5px;
+    border-style: none;
+    background-color: $background-color_1;
+    color: $color_1;
+    // margin-left: 15px;
+    // margin-left: 400px;
+    margin-right: 100px;
     width: 8rem;
     height: 2.5rem;
     z-index: 99999;
@@ -58,6 +75,7 @@ $background-color-button-hover: #df2752;
 
 .card-btn-1 {
     width: 8rem;
+    margin-right: 50px;
 }
 
 .size-button {
