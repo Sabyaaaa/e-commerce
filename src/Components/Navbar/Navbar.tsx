@@ -28,6 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
   };
   const logOutFn = () => {
     logOut();
+    navigate("/")
  
     // Perform any additional logout logic here
   };
