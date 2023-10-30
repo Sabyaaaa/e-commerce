@@ -4,11 +4,9 @@
   
 }
 
-
-// Define variables
 $padding: 25px;
 $marginLeft: 350px;
-$marginTop: -915px;
+$marginTop: -57.09rem;
 $marginCard: 100px;
 $cardBottomMargin: -130px;
 $cardLeftMargin: -110px;
@@ -21,14 +19,18 @@ $rowGap: 10rem;
 
 
 .content {
-  padding-top:4.5rem;
+  // padding-top:8rem;
   padding-bottom:7.5rem;
   overflow: hidden;
+  // margin-top: 8rem;
 }
 .clothing-page {
   display: flex;
   flex-wrap: wrap;
   padding: $padding;
+  // margin-top: 15rem;
+  // margin-top: 80px;
+  margin-top: 5rem;
   // overflow: hidden;
 }
 
@@ -56,6 +58,8 @@ $rowGap: 10rem;
 .filter-class {
   width: $filterClassWidth;
   margin-left: $filterClassMargin;
+  // margin-top: 80px;
+ 
 }
 
 .row {

@@ -1,26 +1,50 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./Cards.scss";
 import Button from "../Button/Button";
+import {  ReducerAction } from '../../context/CartProvider';
+import { ReducerActionType } from "../../context/CartProvider";
 
-interface CardProps {
-  imageSrc: string;
-  productName: string;
+
+type PropsType = {
+  id: number; 
+  product_name: string; 
+  price: number; 
+  sizes: string[]; 
+  color: string; 
+  quantity: { small: number; medium: number; large: number; }; 
+  gender: string; 
+  description: string;
+  image_url: string;
+  rating?: number;
+  category?: string;
+  material?: string;
+  delivery_date?: string
+  
+}
+
+export interface CardProps {
+  id: number;
+  image_url: string;
+  product_name: string;
   price: number;
   description: string;
   category: string;
   rating: number;
   color: string;
-  // gender: string;
+  gender?: string;
   sizes: string[];
   materials: string;
   quantity: Record<string, number>;
+  delivery_date?: string
+
   renderStars: (rating: number) => React.ReactNode;
-  onAddToCart: (productName: string, selectedSize: string) => void;
+  onAddToCart: ( product:CardProps,selectedSize: string) => void;
 }
 
 const Card: React.FC<CardProps> = ({
-  imageSrc,
-  productName,
+  id,
+  image_url,
+  product_name,
   price,
   description,
   category,
@@ -29,21 +53,62 @@ const Card: React.FC<CardProps> = ({
   sizes,
   materials,
   quantity,
+  gender,
+  delivery_date,
   renderStars,
   onAddToCart,
 }) => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-
+  const [sizeMessage, setSizeMessage] = useState("");
+  const [isAddClicked, setIsAddClicked] = useState(false);
+  useEffect(() => {
+    if (sizeMessage) {
+      const timer = setTimeout(() => {
+        setSizeMessage("");
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [sizeMessage]);
   const handleAddToCartClick = () => {
     if (selectedSize) {
-      onAddToCart(productName, selectedSize);
-      // alert("Item added");
+      setSizeMessage("Item added to cart successfully! ✅");
+      onAddToCart(
+        {
+          id,
+          image_url,
+          product_name,
+          price,
+          description,
+          category,
+          rating,
+          color,
+          sizes,
+          materials,
+          quantity,
+          gender,
+          delivery_date,
+          renderStars,
+          onAddToCart,
+        },
+        selectedSize
+      );
+      handlePopupClose();
+      setTimeout(() => {
+        setSizeMessage("");
+        handlePopupClose();
+      }, 1000);
     } else {
-      alert("Please select a size.");
+      if (isPopupVisible) {
+        // Show an error message only if the pop-up is visible
+        setSizeMessage("Please select a size.");
+      } 
     }
   };
+
+  
+ 
   const displayDescription = () => {
     setIsDescriptionVisible(true);
   };
@@ -51,22 +116,23 @@ const Card: React.FC<CardProps> = ({
   const hideDescription = () => {
     setIsDescriptionVisible(false);
     setIsPopupVisible(false);  // Close the size selection popup
-    setSelectedSize(null);  
+    setSelectedSize(null);
   };
   // Reset the selected size when popup is closed
   const handlePopupClose = () => {
     setIsPopupVisible(false);
     setSelectedSize(null);
+    setIsAddClicked(false);
   };
 
   return (
     <div className="card-deck">
       <div className="card">
-        <img className="card-img-top custom-img" src={imageSrc} alt="Product" />
+        <img className="card-img-top custom-img" src={image_url} alt="Product" />
         <div className="card-body">
-          <h5 className="card-title">{productName}</h5>
+          <h5 className="card-title">{product_name}</h5>
           <div className="price-rating">
-            <span className="card-price">Price: ₹{price}</span>
+            <span className="card-price">Price: {price}</span>
             <span className="rating-stars">{renderStars(rating)}</span>
             <span className="rating-value">{rating}</span>
           </div>
@@ -90,8 +156,8 @@ const Card: React.FC<CardProps> = ({
               <span className="close1" onClick={hideDescription}>
                 &times;
               </span>
-              <h2>{productName}</h2>
-              <img className="description-img" src={imageSrc} alt="product" />
+              <h2>{product_name}</h2>
+              <img className="description-img" src={image_url} alt="product" />
               <div className="des-content">
                 <p>
                   <b>Sizes:</b>{" "}
@@ -99,28 +165,36 @@ const Card: React.FC<CardProps> = ({
                     .filter((size) => quantity[size] > 0) // Filter sizes with quantity > 0
                     .join(", ")}
                 </p>
+                <br></br>
 
                 <p>
                   <b>Category: </b>
                   {category}
                 </p>
+                <br></br>
                 <p>
                   <b>Color: </b>
                   {color}
                 </p>
+                <br></br>
                 <p>
                   <b>Material used: </b>
                   {materials}
                 </p>
+                <br></br>
                 <p>
                   <b>Description: </b>
                   {description}
                 </p>
+                <br></br>
                 <p>
                   <b>
                     <i>Product will be delivered within 7 days</i>
                   </b>
                 </p>
+                <br></br>
+                <br></br>
+                <br></br>
                 <p className="returns">
                   <i>14 days easy exchange/returns </i>🩷{" "}
                 </p>
@@ -150,17 +224,39 @@ const Card: React.FC<CardProps> = ({
                     />
                   ))}
               </div>
+
+              {selectedSize === null && sizeMessage === "" && isAddClicked && (
+                <div className="size-message error">Please select a size.</div>
+              )}
               <Button
                 label="Add"
-                className="btn"
-                onClick={handleAddToCartClick}
+                className="add-btn"
+                onClick={() => {
+                  setIsAddClicked(true);
+                  handleAddToCartClick();
+                }}
               />
+              {/* Error message inside the size selection pop-up */}
+              {/* {!selectedSize && (
+                <div className="size-message error">Please select a size.</div>
+              )} */}
             </div>
+          </div>
+        )}
+        {/* Message container inside the size selection pop-up */}
+        {sizeMessage && (
+          <div
+            className={`size-message ${
+              sizeMessage.startsWith("Please") ? "error" : "success"
+            }`}
+          >
+            {sizeMessage}
           </div>
         )}
       </div>
     </div>
   );
 };
-
+ 
 export default Card;
+ 

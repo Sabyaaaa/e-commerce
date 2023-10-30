@@ -17,13 +17,14 @@ body {
   z-index: 1000;
   top: 0;
   width: 100%;
-  margin-left: -22rem;
+  /* margin-left: -22rem; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
   /* background-color: #62aae4; */
   height: 65px;
+  
 }
 
 .brand-logo {
@@ -36,6 +37,7 @@ body {
   flex: 1;
   display: flex;
   z-index: 99999;
+  
 }
 
 .navbar-menu-list,
