@@ -119,6 +119,21 @@
         "country": "India"
       },
       "id": 8
+    },
+    {
+      "name": "shyam",
+      "email": "saad.k@hcl.com",
+      "password": "abc123@A",
+      "mobile": "0513671274",
+      "dob": "2023-10-25",
+      "address": {
+        "street": "C-1/101",
+        "city": "Lotus Pond Apartment,Indirapuram",
+        "state": "Uttar Pradesh",
+        "zipCode": "201301",
+        "country": "India"
+      },
+      "id": 9
     }
   ]
 }

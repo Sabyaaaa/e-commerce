@@ -10,6 +10,7 @@ import  { CartProvider,CartContext, UseCartContextType } from "../../context/Car
 import {  ReducerAction } from '../../context/CartProvider';
 import { ReducerActionType } from "../../context/CartProvider";
 import useCart from '../../hooks/useCart';
+import { json } from "stream/consumers";
 
 // type PropsType = {
 //   product: 
@@ -35,7 +36,7 @@ import useCart from '../../hooks/useCart';
 
 const ClothingPage: React.FC = () => {
 
-  const {dispatch, REDUCER_ACTIONS}= useCart()
+  const {dispatch, REDUCER_ACTIONS,cart}= useCart()
   // const [viewCart, setViewCart] = useState<boolean>(false);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
@@ -95,7 +96,12 @@ const ClothingPage: React.FC = () => {
   };
 
   const handleAddToCart = ( product:CardProps, selectedSize: string  ) => {
-    
+    const cartItem = cart.find((item) => item.id === product.id && item.sizes === selectedSize)
+ 
+    if(cartItem){
+      alert("This item is already in cart")
+    }
+    else{
     dispatch({
        type: REDUCER_ACTIONS.ADD,
        payload:{
@@ -108,12 +114,14 @@ const ClothingPage: React.FC = () => {
 
        }
     })
+
     alert(
       "Item added to cart:\nProduct Name: " +
        product.product_name +
         "\nSize: " +
         selectedSize
     );
+    }
   };
   useEffect(() => {
     const filteredClothingItems = mockClothingItems.filter((item) => {
@@ -159,12 +167,14 @@ const ClothingPage: React.FC = () => {
     });
 
     setFilteredItems(filteredClothingItems);
+    sessionStorage.setItem("cart123",JSON.stringify(cart))
   }, [
     selectedSizes,
     selectedColors,
     selectedCategories,
     selectedPrice,
     selectedGender,
+    cart,
   ]);
 
   return (

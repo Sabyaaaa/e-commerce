@@ -87,12 +87,12 @@ const StoreDataInSessionStorage: React.FC = () => {
   return (
     <div className="user-details-container">
       {/* <div className="header">Order Summary</div> */}
-      <div>
+      
     
       <Navbar onGenderChange={onGenderChange}/>
       
   
-  </div>
+  
       <div className="details">
         {users.map((user) => (
           <div className="user-card" key={user.id}>

@@ -54,6 +54,14 @@ body {
     height: $navbarHeight;
    
 }
+.home-login{
+    margin-left: 20px;
+    z-index: 99999;
+}
+.order-nav{
+    margin-left: 20px;
+    display: flex;
+}
 
 .brand-logo {
     width: $brandLogoWidth;
