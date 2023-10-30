@@ -1,0 +1,66 @@
+*{
+  margin: 0;
+  padding: 0;
+  
+}
+
+$padding: 25px;
+$marginLeft: 350px;
+$marginTop: -915px;
+$marginCard: 100px;
+$cardBottomMargin: -130px;
+$cardLeftMargin: -110px;
+$cardTitleFontSize: 1.25rem;
+$cardTextFontSize: 1rem;
+$btnSecondaryMargin: 10px;
+$filterClassWidth: 250px;
+$filterClassMargin: 10px;
+$rowGap: 10rem;
+
+
+.content {
+  padding-top:4.5rem;
+  padding-bottom:7.5rem;
+  overflow: hidden;
+}
+.clothing-page {
+  display: flex;
+  flex-wrap: wrap;
+  padding: $padding;
+  // overflow: hidden;
+}
+
+.card-container {
+  margin-left: $marginLeft;
+  margin-top: $marginTop;
+}
+
+.card {
+  margin: 0 $marginCard $cardBottomMargin $cardLeftMargin;
+}
+
+.card-title {
+  font-size: $cardTitleFontSize;
+}
+
+.card-text {
+  font-size: $cardTextFontSize;
+}
+
+.btn-secondary {
+  margin-left: $btnSecondaryMargin;
+}
+
+.filter-class {
+  width: $filterClassWidth;
+  margin-left: $filterClassMargin;
+}
+
+.row {
+  gap: $rowGap;
+}
+
+
+.main-navbar{
+  margin-left: -25px;
+}
