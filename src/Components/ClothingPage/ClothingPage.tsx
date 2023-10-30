@@ -115,12 +115,12 @@ const ClothingPage: React.FC = () => {
        }
     })
 
-    alert(
-      "Item added to cart:\nProduct Name: " +
-       product.product_name +
-        "\nSize: " +
-        selectedSize
-    );
+    // alert(
+    //   "Item added to cart:\nProduct Name: " +
+    //    product.product_name +
+    //     "\nSize: " +
+    //     selectedSize
+    // );
     }
   };
   useEffect(() => {

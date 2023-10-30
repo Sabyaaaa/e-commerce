@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./Cards.scss";
 import Button from "../Button/Button";
 import {  ReducerAction } from '../../context/CartProvider';
@@ -61,27 +61,54 @@ const Card: React.FC<CardProps> = ({
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-
+  const [sizeMessage, setSizeMessage] = useState("");
+  const [isAddClicked, setIsAddClicked] = useState(false);
+  useEffect(() => {
+    if (sizeMessage) {
+      const timer = setTimeout(() => {
+        setSizeMessage("");
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [sizeMessage]);
   const handleAddToCartClick = () => {
     if (selectedSize) {
-      onAddToCart( {id, image_url,product_name,
-        price,
-        description,
-        category,
-        rating,
-        color,
-        sizes,
-        materials,
-        quantity,
-        gender,
-        delivery_date,
-        renderStars,
-        onAddToCart, },selectedSize);
-      // alert("Item added");
+      setSizeMessage("Item added to cart successfully! ✅");
+      onAddToCart(
+        {
+          id,
+          image_url,
+          product_name,
+          price,
+          description,
+          category,
+          rating,
+          color,
+          sizes,
+          materials,
+          quantity,
+          gender,
+          delivery_date,
+          renderStars,
+          onAddToCart,
+        },
+        selectedSize
+      );
+      handlePopupClose();
+      setTimeout(() => {
+        setSizeMessage("");
+        handlePopupClose();
+      }, 1000);
     } else {
-      alert("Please select a size.");
+      if (isPopupVisible) {
+        // Show an error message only if the pop-up is visible
+        setSizeMessage("Please select a size.");
+      } 
     }
   };
+
+  
+ 
   const displayDescription = () => {
     setIsDescriptionVisible(true);
   };
@@ -95,6 +122,7 @@ const Card: React.FC<CardProps> = ({
   const handlePopupClose = () => {
     setIsPopupVisible(false);
     setSelectedSize(null);
+    setIsAddClicked(false);
   };
 
   return (
@@ -196,17 +224,39 @@ const Card: React.FC<CardProps> = ({
                     />
                   ))}
               </div>
+
+              {selectedSize === null && sizeMessage === "" && isAddClicked && (
+                <div className="size-message error">Please select a size.</div>
+              )}
               <Button
                 label="Add"
                 className="add-btn"
-                onClick={handleAddToCartClick}
+                onClick={() => {
+                  setIsAddClicked(true);
+                  handleAddToCartClick();
+                }}
               />
+              {/* Error message inside the size selection pop-up */}
+              {/* {!selectedSize && (
+                <div className="size-message error">Please select a size.</div>
+              )} */}
             </div>
+          </div>
+        )}
+        {/* Message container inside the size selection pop-up */}
+        {sizeMessage && (
+          <div
+            className={`size-message ${
+              sizeMessage.startsWith("Please") ? "error" : "success"
+            }`}
+          >
+            {sizeMessage}
           </div>
         )}
       </div>
     </div>
   );
 };
-
+ 
 export default Card;
+ 

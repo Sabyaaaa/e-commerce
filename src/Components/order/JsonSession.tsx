@@ -184,7 +184,7 @@ const StoreDataInSessionStorage: React.FC = () => {
                 {/* PAYMENT */}
                 <span style={{ fontWeight: "medium"  }}>
                       {" "}
-                      PAYMENT
+                      Payment
                     </span>
               </button>
             </div>
