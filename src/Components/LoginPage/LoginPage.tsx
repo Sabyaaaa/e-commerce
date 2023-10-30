@@ -128,7 +128,7 @@ const LoginPage: React.FC = () => {
               console.log("Login Successful", user);
 
               logIn();
-              alert("Login Successful");
+              // alert("Login Successful");
 
               const userId = data[0].id;
               console.log(data[0]);
