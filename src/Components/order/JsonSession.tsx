@@ -3,6 +3,7 @@ import Form from "./form";
 import "./UserCard.scss";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import { toast,ToastContainer } from "react-toastify";
 
 interface User {
   id: number;
@@ -38,11 +39,11 @@ const StoreDataInSessionStorage: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [details, setDetails] = useState<undefined>();
   const [total, setTotal] = useState<undefined>();
+  // const [showMessage, setShowMessage] = useState(false);
   // const deliveryCharges = 50;
   const navigate = useNavigate();
   
-    // var totalAmount = deliveryCharges+(total|| 0);
-   
+    
 
   useEffect(() => {
     const storedUsers = sessionStorage.getItem("userId");
@@ -83,19 +84,42 @@ const StoreDataInSessionStorage: React.FC = () => {
   function onGenderChange(gender: string): void {
     throw new Error('Function not implemented.')
   }
+  function handlePaymentClick(): void {
+    // setShowMessage(true); 
+    toast("Order Placed Successfully ✅")
+  }
+
+  // useEffect(() => {
+  //   let timeout: NodeJS.Timeout;
+
+  //   if (showMessage) {
+  //     timeout = setTimeout(() => {
+  //       setShowMessage(false); 
+  //       navigate("/"); 
+  //     },2000); 
+  //   }
+
+  //   return () => {
+  //     clearTimeout(timeout); 
+  //   };
+  // }, [showMessage, navigate]);
 
   return (
     <div className="user-details-container">
-      {/* <div className="header">Order Summary</div> */}
       
+
+
     
       <Navbar onGenderChange={onGenderChange}/>
       
   
-  
+      
       <div className="details">
+
+      
         {users.map((user) => (
           <div className="user-card" key={user.id}>
+            
             <h2 className="delivery">Delivery Address</h2>
             <div className="user-details">
               <div className="radio-group">
@@ -136,6 +160,12 @@ const StoreDataInSessionStorage: React.FC = () => {
         <div className="cart-card">
           
           <div className="cart-details">
+          {/* {showMessage && (
+          <div className="thankyou-message">
+          
+          <span style={{ fontWeight: "medium" , color:"white"}}>Your order has been  placed successfully  ✅</span>
+        </div>
+      )} */}
           <h2 className="order-product">Product Details</h2>
             <div>
               {orders.map((order, index) => (
@@ -157,36 +187,23 @@ const StoreDataInSessionStorage: React.FC = () => {
                     <span style={{ fontWeight: "bold" }}> Total MRP : {total} </span>
                   </p>
                   <br></br>
-                  {/* <p className="order-p">
-                    <span> Delivery Charges : ₹ {deliveryCharges} </span>
-                  </p> */}
+                  
                 </div>
               </div>
               <hr className="product-line" />
-              <div className="product-prices">
-                <div>
-                  {/* <p className="order-p">
-                    <span style={{ fontWeight: "bold" }}>
-                      {" "}
-                      Payable Amount : ₹{totalAmount}
-                    </span>
-                  </p> */}
-                </div>
-              </div>
+              
               <button
                 type="submit"
                 className="placeOrder"
-                onClick={() => {
-                  alert("Thank you for your payment");
-                  navigate("/");
-                }}
+                onClick={handlePaymentClick}
               >
-                {/* PAYMENT */}
+                
                 <span style={{ fontWeight: "medium"  }}>
-                      {" "}
+                      
                       Payment
                     </span>
               </button>
+              
             </div>
           </div>
         </div>
@@ -208,6 +225,7 @@ const StoreDataInSessionStorage: React.FC = () => {
         </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

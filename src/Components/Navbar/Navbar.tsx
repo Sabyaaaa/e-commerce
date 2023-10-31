@@ -100,7 +100,7 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
               // <Button label="View Products" className="cart-btn" onClick={viewProducts} />
               
                 <div className="para-on">
-                  <p className="para-order">Order summary</p>
+                  <p className="para-order">Order Summary</p>
                 </div>
               
             )}
@@ -119,7 +119,7 @@ const Navbar: React.FC<NavbarProps> = ({ onGenderChange }) => {
                 onClick={viewProducts}
               />
             )}
-            { !isOrderPage && (
+            { !isOrderPage && !isCartPage &&(
               <div className="home-login">
                 {isLoggedIn ? (
                   <Button
