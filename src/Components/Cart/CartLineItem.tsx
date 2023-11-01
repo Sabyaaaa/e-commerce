@@ -14,6 +14,22 @@ const CartLineItem = ({ item, dispatch, REDUCER_ACTIONS }: PropsType) => {
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const size = item.sizes;
+  const inputSize = size ;
+ 
+  function capitalizeFirstLetter(inputSize: string){
+    if(inputSize.length>0){
+      return inputSize.charAt(0).toUpperCase() + inputSize.slice(1);
+    }
+    else{
+      return inputSize;
+    }
+  }
+ 
+  const splitArray = inputSize.split(/[^a-zA-z]+/)
+ 
+  const firstletter = splitArray[0][0]
+ 
+  const capitalizedFirstLetter = capitalizeFirstLetter(firstletter)
   
 
   const productInData = data.products.find((product) => product.id === item.id);
@@ -78,11 +94,11 @@ const CartLineItem = ({ item, dispatch, REDUCER_ACTIONS }: PropsType) => {
       </div>
 
       <div className="font-styling__cart">
-        {size}
+        Size:{capitalizedFirstLetter}
       </div>
 
       <label htmlFor="itemQty" className="offscreen font-styling__cart">
-        Item Quantity
+        Quantity
       </label>
       <select
         name="itemQty"
